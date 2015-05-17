@@ -7,5 +7,10 @@
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.1.4",
+    "eslint": "^0.21.1",
+    "eslint-plugin-react": "^2.3.0"
   }
 }
