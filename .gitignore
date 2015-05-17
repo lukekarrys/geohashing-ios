@@ -26,3 +26,7 @@ project.xcworkspace
 #
 node_modules/
 npm-debug.log
+
+# Generated files
+#
+index.ios.js

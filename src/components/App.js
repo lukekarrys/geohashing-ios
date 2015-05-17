@@ -7,7 +7,7 @@ const {MapView, View} = React;
 
 const styles = StyleSheet.create({
   map: {
-    height: 302,
+    height: 400,
     marginTop: 20
   }
 });
