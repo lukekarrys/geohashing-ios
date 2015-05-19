@@ -2,6 +2,7 @@
 
 import webpack from 'webpack';
 import path from 'path';
+import defaults from './src/util/webpackDefaults';
 
 export default {
   entry: './src/main.js',
@@ -11,6 +12,10 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: ['babel-loader?optional=runtime']
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json-loader']
       }
     ]
   },
@@ -21,7 +26,13 @@ export default {
   },
   externals: [],
   resolve: {
-    extensions: ['', '.js']
+    extensions: [
+      '',
+      '.js'
+    ],
+    // Append react-native since I wrote a module that uses this
+    // field in package.json: https://github.com/lukekarrys/djia/blob/master/package.json#L54
+    packageMains: ['react-native'].concat(defaults.resolve.packageMains)
   },
   plugins: [
     new webpack.NoErrorsPlugin()
