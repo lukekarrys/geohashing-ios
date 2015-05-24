@@ -3,6 +3,7 @@
   "description": "A geohashing app for iOS built with React Native",
   "version": "0.0.1",
   "dependencies": {
+    "flummox": "^4.0.0-alpha2",
     "geo-graticule": "^2.0.3",
     "geohash-coordinates": "^1.1.2",
     "lodash": "^3.8.0",
