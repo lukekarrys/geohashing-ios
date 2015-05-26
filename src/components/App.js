@@ -1,84 +1,73 @@
 'use strict';
 
 import React from 'react-native';
-import StyleSheet from 'StyleSheet';
-import geohash from 'geohash-coordinates';
 import Geo from 'geo-graticule';
-import assign from 'lodash/object/assign';
-import partial from 'lodash/function/partial';
 
-const {MapView, View} = React;
+import Map from './GeohashMap';
+
+const {View, StyleSheet, Text} = React;
 
 const styles = StyleSheet.create({
-  map: {
-    height: 649,
-    marginTop: 20
+  container: {
+    flex: 1
+  },
+  navbar: {
+    height: 60,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    paddingBottom: 5,
+    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
+    borderBottomWidth: 1,
+    justifyContent: 'space-between'
+  },
+  navbarText: {
+    fontSize: 16,
+    marginVertical: 10,
+    flex: 2,
+    textAlign: 'center'
   }
 });
 
-const AppMapView = React.createClass({
-  propTypes: {
-    location: React.PropTypes.string,
-    date: React.PropTypes.object
-  },
-
-  getDefaultProps () {
-    return {
-      date: new Date(),
-      location: '34.3,-111.3'
-    };
+const App = React.createClass({
+  componentDidMount () {
+    this.setState({fetching: true});
+    navigator.geolocation.getCurrentPosition(
+      (position) => this.setState({location: position.coords, fetching: false, error: null}),
+      (err) => this.setState({error: err, fetching: false, location: null})
+    );
   },
 
   getInitialState () {
     return {
-      annotations: null
+      location: null,
+      fetching: null,
+      error: null
     };
-  },
-
-  componentDidMount () {
-    const location = new Geo(this.props.location);
-    geohash.latest({
-      date: this.props.date,
-      days: 1,
-      location: location.toString()
-    }, (err, results) => {
-      if (err) {
-        throw err;
-      }
-      this._setAnnotationsFromGeohash(location, results);
-    });
-  },
-
-  _geohashPointToAnnotation (title, point) {
-    return {
-      title,
-      latitude: point[0],
-      longitude: point[1]
-    };
-  },
-
-  _setAnnotationsFromGeohash (location, geohashResult) {
-    const [result] = geohashResult;
-    const {date} = result;
-    const points = result.neighbors;
-    const annotations = points.map(partial(this._geohashPointToAnnotation, date));
-    this.setState({
-      annotations: annotations.concat(assign({
-        title: 'You are here'
-      }, location.toJSON()))
-    });
   },
 
   render () {
+    let message;
+
+    if (this.state.error) {
+      message = 'Error: ' + this.state.error.message;
+    }
+    else if (this.state.fetching) {
+      message = 'Fetching User Location';
+    }
+    else if (this.state.location) {
+      message = new Geo(this.state.location).toArray().map((val) => val.toFixed(2)).join(', ');
+    }
+
     return (
-      <View>
-        <MapView
-          style={styles.map}
-          annotations={this.state.annotations}
-        />
+      <View style={styles.container}>
+        <View style={styles.navbar}>
+          <Text style={styles.navbarText}>{message}</Text>
+        </View>
+        <Map location={this.state.location} date='2015-05-22' days={4} />
       </View>
     );
   }
 });
 
-export default AppMapView;
+export default App;
