@@ -29,4 +29,5 @@ npm-debug.log
 
 # Generated files
 #
-index.ios.js
+iOS/main.jsbundle
+webpack.config.js

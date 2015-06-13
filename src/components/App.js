@@ -34,7 +34,8 @@ const App = React.createClass({
     this.setState({fetching: true});
     navigator.geolocation.getCurrentPosition(
       (position) => this.setState({location: position.coords, fetching: false, error: null}),
-      (err) => this.setState({error: err, fetching: false, location: null})
+      (err) => this.setState({error: err, fetching: false, location: null}),
+      {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
     );
   },
 
