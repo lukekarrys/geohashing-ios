@@ -10,6 +10,7 @@
     "react-native": "^0.4.4"
   },
   "devDependencies": {
+    "async": "^1.2.1",
     "babel": "^5.5.8",
     "babel-core": "^5.5.8",
     "babel-eslint": "^3.1.15",
@@ -33,9 +34,11 @@
   ],
   "private": true,
   "scripts": {
+    "build": "npm run webpack-config && NODE_ENV=production react-native-webpack-server start",
     "lint": "eslint .",
-    "start": "npm run webpack-config && babel-node lib/release && HOT=1 react-native-webpack-server start --hot",
-    "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js",
-    "build": "npm run webpack-config && NODE_ENV=production react-native-webpack-server start && NODE_ENV=production babel-node lib/release"
+    "release": "NODE_ENV=production babel-node lib/release && echo 'Open Xcode and build for device'",
+    "reset-dev": "NODE_ENV=development babel-node lib/release",
+    "start": "npm run webpack-config && npm run reset-dev && HOT=1 react-native-webpack-server start --hot",
+    "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js"
   }
 }
