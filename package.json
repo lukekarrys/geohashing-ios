@@ -39,6 +39,7 @@
     "release": "NODE_ENV=production babel-node lib/release && echo 'Open Xcode and build for device'",
     "reset-dev": "NODE_ENV=development babel-node lib/release",
     "start": "npm run webpack-config && npm run reset-dev && HOT=1 react-native-webpack-server start --hot",
-    "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js"
+    "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js",
+    "xcode": "open ./geohashing.xcodeproj"
   }
 }

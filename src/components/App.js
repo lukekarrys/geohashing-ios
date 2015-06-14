@@ -5,6 +5,14 @@ import Geo from 'geo-graticule';
 
 import Map from './GeohashMap';
 
+const today = () => {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = (d.getMonth() + 1).toString();
+  const dd = d.getDate().toString();
+  return `${yyyy}-${mm[1] ? mm : '0' + mm[0]}-${dd[1] ? dd : '0' + dd[0]}`;
+};
+
 const {View, StyleSheet, Text} = React;
 
 const styles = StyleSheet.create({
@@ -43,7 +51,8 @@ const App = React.createClass({
     return {
       location: null,
       fetching: null,
-      error: null
+      error: null,
+      date: today()
     };
   },
 
@@ -65,7 +74,7 @@ const App = React.createClass({
         <View style={styles.navbar}>
           <Text style={styles.navbarText}>{message}</Text>
         </View>
-        <Map location={this.state.location} date='2015-05-22' days={4} />
+        <Map location={this.state.location} date={this.state.date} days={4} />
       </View>
     );
   }
