@@ -56,8 +56,7 @@ if (isProd) {
       sourceMap: false
     }),
     new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')},
-      __DEV__: JSON.stringify(false)
+      'process.env': {NODE_ENV: JSON.stringify('production')}
     })
   );
 }
