@@ -40,7 +40,7 @@ const App = React.createClass({
       longitude: null,
       fetching: null,
       error: null,
-      editing: true,
+      editing: false,
       date: new Date(),
       days: 1
     };
