@@ -8,8 +8,10 @@ class AppStore extends Store {
     super();
 
     const appActions = flux.getActions('app');
-    this.register(appActions.changeDate, this.handleDateChange);
-    this.register(appActions.changeLocation, this.handleLocationChange);
+    this.register(appActions.dateChange, this.handleDateChange);
+    this.register(appActions.locationChange, this.handleLocationChange);
+    this.register(appActions.geohashError, this.handleGeohashError);
+    this.register(appActions.geohashRequest, this.handleGeohashRequest);
 
     this.state = {};
   }
@@ -23,6 +25,18 @@ class AppStore extends Store {
   handleLocationChange (content) {
     this.setState({
       location: content
+    });
+  }
+
+  handleGeohashError (content) {
+    this.setState({
+      geohashError: content
+    });
+  }
+
+  handleGeohashRequest (content) {
+    this.setState({
+      geohashRequest: content
     });
   }
 }

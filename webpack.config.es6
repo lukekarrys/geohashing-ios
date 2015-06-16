@@ -17,7 +17,10 @@ const config = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/react-native-button')
+        ],
         loaders: ['babel?stage=0&blacklist=validation.react']
       },
       {

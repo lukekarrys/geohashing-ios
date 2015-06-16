@@ -3,12 +3,20 @@
 import {Actions} from 'flummox';
 
 class AppActions extends Actions {
-  changeDate (date) {
+  dateChange (date) {
     return date;
   }
 
-  changeLocation (location) {
+  locationChange (location) {
     return location;
+  }
+
+  geohashError (err) {
+    return err;
+  }
+
+  geohashRequest () {
+    return true;
   }
 }
 

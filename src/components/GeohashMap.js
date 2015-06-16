@@ -64,7 +64,9 @@ const GeohashMap = React.createClass({
         days,
         location
       }, (err, results) => {
-        if (err) { throw err; }
+        if (err) {
+          return;
+        }
         this._setAnnotationsFromGeohash(new Geo(location), results);
       });
     }

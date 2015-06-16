@@ -8,6 +8,7 @@ const DayPicker = React.createClass({
       <DatePickerIOS
         mode='date'
         timeZoneOffsetInMinutes={-1 * new Date().getTimezoneOffset()}
+        maximumDate={new Date()}
         {...this.props}
       />
     );
