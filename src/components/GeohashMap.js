@@ -15,17 +15,26 @@ const styles = StyleSheet.create({
   }
 });
 
+const format = (d) => {
+  const yyyy = d.getFullYear();
+  const mm = (d.getMonth() + 1).toString();
+  const dd = d.getDate().toString();
+  return `${yyyy}-${mm[1] ? mm : '0' + mm[0]}-${dd[1] ? dd : '0' + dd[0]}`;
+};
+
 const GeohashMap = React.createClass({
   propTypes: {
-    location: React.PropTypes.object,
-    date: React.PropTypes.string,
+    latitude: React.PropTypes.number,
+    longitude: React.PropTypes.number,
+    date: React.PropTypes.instanceOf(Date),
     days: React.PropTypes.number
   },
 
   getDefaultProps () {
     return {
-      date: new Date().toJSON(),
-      location: null,
+      date: null,
+      latitude: null,
+      longitude: null,
       days: 1
     };
   },
@@ -46,11 +55,12 @@ const GeohashMap = React.createClass({
   },
 
   _respondToProps (props) {
-    const {location, date, days} = props;
+    const {latitude, longitude, date, days} = props;
+    const location = {latitude, longitude};
 
-    if (location) {
+    if (latitude && longitude && date) {
       geohash.latest({
-        date,
+        date: format(date),
         days,
         location
       }, (err, results) => {
