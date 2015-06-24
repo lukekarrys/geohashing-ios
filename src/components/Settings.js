@@ -3,11 +3,13 @@
 import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS} from 'react-native';
 import Button from 'react-native-button';
 import assign from 'lodash/object/assign';
+import Icon from 'react-native-icons';
 
 const styles = StyleSheet.create({
-  button: {
-    width: 60,
-    height: 40
+  locationIcon: {
+    width: 42,
+    height: 42,
+    backgroundColor: '#ccc'
   },
   flexRow: {
     flexDirection: 'row'
@@ -145,7 +147,13 @@ const Settings = React.createClass({
             onChangeText={longitude => this.setValues({longitude: Number(longitude)})}
             value={this.state.longitude != null ? this.state.longitude.toString() : ''}
           />
-          <Button style={styles.button} onPress={this._handleCurrentLocation}>CL</Button>
+          <Button onPress={this._handleCurrentLocation}>
+            <Icon
+              name='fontawesome|location-arrow'
+              size={20}
+              style={styles.locationIcon}
+            />
+          </Button>
         </SettingsRow>
 
         <SettingsRow label='Find Location'>

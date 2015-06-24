@@ -20,7 +20,8 @@ const config = {
         include: [
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/react-native-button'),
-          path.resolve(__dirname, 'node_modules/react-native-drawer')
+          path.resolve(__dirname, 'node_modules/react-native-drawer'),
+          path.resolve(__dirname, 'node_modules/react-native-icons')
         ],
         loaders: ['babel?stage=0&blacklist=validation.react']
       },

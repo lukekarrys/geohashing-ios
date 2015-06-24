@@ -9,8 +9,8 @@ import Settings from './Settings';
 const styles = StyleSheet.create({
   drawer: {
     shadowColor: '#000000',
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
+    shadowOpacity: 0.6,
+    shadowRadius: 15,
     flex: 1
   }
 });
@@ -18,10 +18,7 @@ const styles = StyleSheet.create({
 const Main = React.createClass({
   componentDidMount () {
     navigator.geolocation.getCurrentPosition(
-      (position) => this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude}),
-      // FIXME: add back when #1 is fixed
-      // (err) => this.setState({error: err, fetching: false, location: null}),
-      // {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+      (position) => this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude})
     );
   },
 
