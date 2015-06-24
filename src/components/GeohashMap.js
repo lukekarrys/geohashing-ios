@@ -6,6 +6,7 @@ import Geo from 'geo-graticule';
 import assign from 'lodash/object/assign';
 import partial from 'lodash/function/partial';
 import flatten from 'lodash/array/flatten';
+import zeroFill from 'zero-fill';
 
 const {MapView, StyleSheet} = React;
 
@@ -19,7 +20,7 @@ const format = (d) => {
   const yyyy = d.getFullYear();
   const mm = (d.getMonth() + 1).toString();
   const dd = d.getDate().toString();
-  return `${yyyy}-${mm[1] ? mm : '0' + mm[0]}-${dd[1] ? dd : '0' + dd[0]}`;
+  return `${yyyy}-${zeroFill(2, mm)}-${zeroFill(2, dd)}`;
 };
 
 const GeohashMap = React.createClass({
@@ -28,15 +29,6 @@ const GeohashMap = React.createClass({
     longitude: React.PropTypes.number,
     date: React.PropTypes.instanceOf(Date),
     days: React.PropTypes.number
-  },
-
-  getDefaultProps () {
-    return {
-      date: null,
-      latitude: null,
-      longitude: null,
-      days: 1
-    };
   },
 
   getInitialState () {

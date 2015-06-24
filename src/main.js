@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react-native';
-import App from './components/App';
+import Main from './components/Main';
 
 const {AppRegistry} = React;
 
-AppRegistry.registerComponent('geohashing', () => App);
+AppRegistry.registerComponent('geohashing', () => Main);
