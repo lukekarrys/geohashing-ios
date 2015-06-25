@@ -41,8 +41,6 @@ const GeohashMap = React.createClass({
     this.setState({fetching: true});
     geohashAnnotations(props, (err, results) => {
       if (err) {
-        // TODO: remove console when error indicator is working #7
-        console.error(err);  // eslint-disable-line no-console
         this.setState({
           error: err.message,
           fetching: false

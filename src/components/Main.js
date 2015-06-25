@@ -31,14 +31,18 @@ const Main = React.createClass({
   },
 
   _onDrawerClose () {
-    const settings = this.refs.settings.getValues();
-    this.setState(settings);
+    this.setState(this.refs.settings.getValues());
   },
 
   render () {
     const drawerContent = <Settings ref='settings' {...this.state} />;
     return (
-      <Drawer type='static' content={drawerContent} onClose={this._onDrawerClose}>
+      <Drawer
+        type='static'
+        tweenHandler={(ratio) => ({main: {opacity: 1 - ratio}})}
+        content={drawerContent}
+        onClose={this._onDrawerClose}
+      >
         <View style={styles.drawer}><Map {...this.state} /></View>
       </Drawer>
     );
