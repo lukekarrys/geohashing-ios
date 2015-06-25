@@ -24,6 +24,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		953548161B3BB04300DA7FBC /* libRNReverseGeo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 953548151B3BB02F00DA7FBC /* libRNReverseGeo.a */; };
 		95F7CE141B3B3E4E000225A7 /* libReactNativeIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F7CE131B3B3E22000225A7 /* libReactNativeIcons.a */; };
 		95F7CE191B3B3F2E000225A7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95F7CE151B3B3F2E000225A7 /* FontAwesome.otf */; };
 		95F7CE1A1B3B3F2E000225A7 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F7CE161B3B3F2E000225A7 /* foundation-icons.ttf */; };
@@ -116,6 +117,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		953548141B3BB02F00DA7FBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 953548041B3BB02F00DA7FBC /* RNReverseGeo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DF1E1FC1B01837500AB1370;
+			remoteInfo = RNReverseGeo;
+		};
 		95F7CE121B3B3E22000225A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 95F7CE0E1B3B3E22000225A7 /* ReactNativeIcons.xcodeproj */;
@@ -148,6 +156,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		953548041B3BB02F00DA7FBC /* RNReverseGeo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReverseGeo.xcodeproj; path = "node_modules/react-native-reverse-geo/RNReverseGeo.xcodeproj"; sourceTree = "<group>"; };
 		95F7CE0E1B3B3E22000225A7 /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeIcons.xcodeproj; path = "node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; };
 		95F7CE151B3B3F2E000225A7 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FontAwesome.otf"; sourceTree = "<group>"; };
 		95F7CE161B3B3F2E000225A7 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
@@ -171,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953548161B3BB04300DA7FBC /* libRNReverseGeo.a in Frameworks */,
 				95F7CE141B3B3E4E000225A7 /* libReactNativeIcons.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -303,6 +313,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				953548041B3BB02F00DA7FBC /* RNReverseGeo.xcodeproj */,
 				95F7CE0E1B3B3E22000225A7 /* ReactNativeIcons.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -352,6 +363,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* geohashing.app */,
 				00E356EE1AD99517003FC87E /* geohashingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		953548051B3BB02F00DA7FBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				953548151B3BB02F00DA7FBC /* libRNReverseGeo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -480,6 +499,10 @@
 					ProductGroup = 95F7CE0F1B3B3E22000225A7 /* Products */;
 					ProjectRef = 95F7CE0E1B3B3E22000225A7 /* ReactNativeIcons.xcodeproj */;
 				},
+				{
+					ProductGroup = 953548051B3BB02F00DA7FBC /* Products */;
+					ProjectRef = 953548041B3BB02F00DA7FBC /* RNReverseGeo.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -565,6 +588,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		953548151B3BB02F00DA7FBC /* libRNReverseGeo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNReverseGeo.a;
+			remoteRef = 953548141B3BB02F00DA7FBC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		95F7CE131B3B3E22000225A7 /* libReactNativeIcons.a */ = {

@@ -4,6 +4,7 @@ import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS} from
 import Button from 'react-native-button';
 import assign from 'lodash/object/assign';
 import Icon from 'react-native-icons';
+import {RNReverseGeo} from 'NativeModules';
 
 const styles = StyleSheet.create({
   locationIcon: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row'
   },
-  geoInput: {
+  rowInput: {
     flex: 1,
     borderRightWidth: 1
   },
@@ -81,7 +82,7 @@ const GeoInput = React.createClass({
     return (
       <SettingsInput
         placeholder={name}
-        containerStyle={[styles.geoInput, style]}
+        containerStyle={[styles.rowInput, style]}
         keyboardType='numbers-and-punctuation'
         clearButtonMode='while-editing'
         autoCorrect={false}
@@ -133,6 +134,16 @@ const Settings = React.createClass({
     );
   },
 
+  _handleLocationSearch () {
+    RNReverseGeo.geoCodeAddress(this.state.location, (results) => {
+      const {coords} = results;
+      this.setState({
+        latitude: Number(coords.latitude),
+        longitude: Number(coords.longitude)
+      });
+    });
+  },
+
   render () {
     return (
       <View style={{marginTop: 20}}>
@@ -156,8 +167,19 @@ const Settings = React.createClass({
           </Button>
         </SettingsRow>
 
-        <SettingsRow label='Find Location'>
-          <SettingsInput placeholder='City, State' />
+        <SettingsRow label='Find Location' style={styles.flexRow}>
+          <SettingsInput
+            placeholder='City, State'
+            containerStyle={styles.rowInput}
+            onChangeText={location => this.setState({location})}
+          />
+          <Button onPress={this._handleLocationSearch}>
+            <Icon
+              name='fontawesome|search'
+              size={20}
+              style={styles.locationIcon}
+            />
+          </Button>
         </SettingsRow>
 
         <SettingsRow label='Following days to find'>

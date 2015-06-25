@@ -10,6 +10,7 @@
     "react-native-button": "^1.2.0",
     "react-native-drawer": "^1.1.2",
     "react-native-icons": "0.0.8",
+    "react-native-reverse-geo": "0.0.6",
     "zero-fill": "^2.2.1"
   },
   "devDependencies": {
