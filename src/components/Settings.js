@@ -7,11 +7,12 @@ import Icon from 'react-native-icons';
 import {RNReverseGeo} from 'NativeModules';
 
 const styles = StyleSheet.create({
-  locationIcon: {
+  iconButton: {
     width: 42,
     height: 42,
     backgroundColor: '#ccc'
   },
+
   flexRow: {
     flexDirection: 'row'
   },
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRightWidth: 1
   },
+
   settingsRow: {
     marginTop: 20
   },
@@ -26,12 +28,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingBottom: 5
   },
-  textInput: {
+
+  settingsInput: {
     height: 40,
     paddingHorizontal: 10,
     paddingVertical: 10
   },
-  textInputContainer: {
+  settingsInputContainer: {
     borderColor: '#ccc',
     borderTopWidth: 1,
     borderBottomWidth: 1
@@ -64,8 +67,8 @@ const SettingsInput = React.createClass({
   render () {
     const {containerStyle, inputStyle, ...rest} = this.props;
     return (
-      <View style={[styles.textInputContainer, containerStyle]}>
-        <TextInput {...rest} style={[styles.textInput, inputStyle]} />
+      <View style={[styles.settingsInputContainer, containerStyle]}>
+        <TextInput {...rest} style={[styles.settingsInput, inputStyle]} />
       </View>
     );
   }
@@ -89,6 +92,28 @@ const GeoInput = React.createClass({
         autoCapitalize='none'
         {...rest}
       />
+    );
+  }
+});
+
+const IconButton = React.createClass({
+  propTypes: {
+    onPress: PropTypes.func,
+    name: PropTypes.string,
+    size: PropTypes.number,
+    style: View.propTypes.style
+  },
+
+  render () {
+    return (
+      <Button onPress={this.props.onPress}>
+        <Icon
+          color='#ffffff'
+          name={this.props.name}
+          size={this.props.size}
+          style={styles.iconButton}
+        />
+      </Button>
     );
   }
 });
@@ -158,13 +183,11 @@ const Settings = React.createClass({
             onChangeText={longitude => this.setValues({longitude: Number(longitude)})}
             value={this.state.longitude != null ? this.state.longitude.toString() : ''}
           />
-          <Button onPress={this._handleCurrentLocation}>
-            <Icon
-              name='fontawesome|location-arrow'
-              size={20}
-              style={styles.locationIcon}
-            />
-          </Button>
+          <IconButton
+            onPress={this._handleCurrentLocation}
+            name='fontawesome|location-arrow'
+            size={20}
+          />
         </SettingsRow>
 
         <SettingsRow label='Find Location' style={styles.flexRow}>
@@ -173,13 +196,11 @@ const Settings = React.createClass({
             containerStyle={styles.rowInput}
             onChangeText={location => this.setState({location})}
           />
-          <Button onPress={this._handleLocationSearch}>
-            <Icon
-              name='fontawesome|search'
-              size={20}
-              style={styles.locationIcon}
-            />
-          </Button>
+          <IconButton
+            onPress={this._handleLocationSearch}
+            name='fontawesome|search'
+            size={20}
+          />
         </SettingsRow>
 
         <SettingsRow label='Following days to find'>
