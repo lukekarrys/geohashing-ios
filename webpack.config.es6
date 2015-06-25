@@ -8,6 +8,7 @@ const defaulter = new Defaulter();
 defaulter.process({});
 const {defaults} = defaulter;
 const isProd = process.env.NODE_ENV === 'production';
+const rnModulePath = path.resolve(__dirname, 'node_modules/react-native-');
 
 const config = {
   entry: {
@@ -19,9 +20,8 @@ const config = {
         test: /\.js$/,
         include: [
           path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules/react-native-button'),
-          path.resolve(__dirname, 'node_modules/react-native-drawer'),
-          path.resolve(__dirname, 'node_modules/react-native-icons')
+          // Starts with 'node_modules/react-native-'
+          p => p.indexOf(rnModulePath) === 0
         ],
         loaders: ['babel?stage=0&blacklist=validation.react']
       },
@@ -40,6 +40,7 @@ const config = {
       '',
       '.js'
     ],
+    // TODO: use resolve.alias for this instead
     // Append react-native since I wrote a module that uses this
     // field in package.json: https://github.com/lukekarrys/djia/blob/master/package.json#L54
     packageMains: ['react-native'].concat(defaults.resolve.packageMains)
