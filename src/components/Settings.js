@@ -4,7 +4,9 @@ import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS} from
 import Button from 'react-native-button';
 import assign from 'lodash/object/assign';
 import Icon from 'react-native-icons';
-import {RNReverseGeo} from 'NativeModules';
+
+import geolocation from './helpers/geolocation';
+import toNumber from './helpers/toNumber';
 
 const styles = StyleSheet.create({
   iconButton: {
@@ -151,22 +153,11 @@ const Settings = React.createClass({
   },
 
   _handleCurrentLocation () {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const {latitude, longitude} = position.coords;
-        this.setState({latitude, longitude});
-      }
-    );
+    geolocation.current(coords => this.setState(coords));
   },
 
   _handleLocationSearch () {
-    RNReverseGeo.geoCodeAddress(this.state.location, (results) => {
-      const {coords} = results;
-      this.setState({
-        latitude: Number(coords.latitude),
-        longitude: Number(coords.longitude)
-      });
-    });
+    geolocation.reverse(this.state.location, coords => this.setState(coords));
   },
 
   render () {
@@ -175,12 +166,12 @@ const Settings = React.createClass({
         <SettingsRow label='Coordinates' style={styles.flexRow}>
           <GeoInput
             name='Latitude'
-            onChangeText={latitude => this.setValues({latitude: Number(latitude)})}
+            onChangeText={latitude => this.setValues({latitude: toNumber(latitude)})}
             value={this.state.latitude != null ? this.state.latitude.toString() : ''}
           />
           <GeoInput
             name='Longitude'
-            onChangeText={longitude => this.setValues({longitude: Number(longitude)})}
+            onChangeText={longitude => this.setValues({longitude: toNumber(longitude)})}
             value={this.state.longitude != null ? this.state.longitude.toString() : ''}
           />
           <IconButton
@@ -195,6 +186,8 @@ const Settings = React.createClass({
             placeholder='City, State'
             containerStyle={styles.rowInput}
             onChangeText={location => this.setState({location})}
+            onSubmitEditing={location => this.setState({location})}
+            returnKeyType='search'
           />
           <IconButton
             onPress={this._handleLocationSearch}
@@ -206,8 +199,11 @@ const Settings = React.createClass({
         <SettingsRow label='Following days to find'>
           <SettingsInput
             placeholder='4'
-            keyboardType='number-pad'
-            onChangeText={days => this.setValues({days: Number(days)})}
+            // TODO: use 'number-pad' instead once I figure out how
+            // to clear it. Currently 'numbers-and-puncutation' is the only
+            // numbers related keyboard that has a return key to close the keyboard
+            keyboardType='numbers-and-punctuation'
+            onChangeText={days => this.setValues({days: toNumber(days)})}
             value={this.state.days != null ? this.state.days.toString() : ''}
           />
         </SettingsRow>

@@ -5,6 +5,7 @@ import Drawer from 'react-native-drawer';
 
 import Map from './GeohashMap';
 import Settings from './Settings';
+import geolocation from './helpers/geolocation';
 
 const styles = StyleSheet.create({
   drawer: {
@@ -17,9 +18,7 @@ const styles = StyleSheet.create({
 
 const Main = React.createClass({
   componentDidMount () {
-    navigator.geolocation.getCurrentPosition(
-      (position) => this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude})
-    );
+    geolocation.current(coords => this.setState(coords));
   },
 
   getInitialState () {
