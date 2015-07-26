@@ -13,7 +13,7 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
 ## First Install
 
-This is using a custom `.babelrc` to allow transformations for modules and class properties. This requires the cache to be cleaned (sometimes?). [React Native #1924](https://github.com/facebook/react-native/issues/1924) will allow a cli param for this but until then it is necessary to add `resetCache: true` to [packager.js](https://gist.github.com/brentvatne/794a77917d7a4b3cce5b/revisions#diff-25c411aaebc5c1757cec74ba9a0d6ba8R229).
+This is using a custom `.babelrc` to allow transformations for modules and class properties. This requires the cache to be cleaned (not sure if this is only required initially). [React Native #1924](https://github.com/facebook/react-native/issues/1924) will allow a cli param for this but until then it is necessary to add `resetCache: true` to [packager.js](https://gist.github.com/brentvatne/794a77917d7a4b3cce5b/revisions#diff-25c411aaebc5c1757cec74ba9a0d6ba8R229).
 
 ## Local
 - `npm install`
