@@ -5,8 +5,8 @@ import Button from 'react-native-button';
 import assign from 'lodash/object/assign';
 import {Icon} from 'react-native-icons';
 
-import geolocation from './helpers/geolocation';
-import toNumber from './helpers/toNumber';
+import geolocation from '../helpers/geolocation';
+import toNumber from '../helpers/toNumber';
 
 const styles = StyleSheet.create({
   iconButton: {

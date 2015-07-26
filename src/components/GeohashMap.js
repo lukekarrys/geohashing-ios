@@ -2,7 +2,7 @@
 
 import React, {MapView, StyleSheet, Component} from 'react-native';
 
-import geohashAnnotations from './helpers/geohashAnnotations';
+import geohashAnnotations from '../helpers/geohashAnnotations';
 
 const styles = StyleSheet.create({
   container: {

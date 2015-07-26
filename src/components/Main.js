@@ -5,7 +5,7 @@ import Drawer from 'react-native-drawer';
 
 import GeoMap from './GeohashMap';
 import Settings from './Settings';
-import geolocation from './helpers/geolocation';
+import geolocation from '../helpers/geolocation';
 
 const styles = StyleSheet.create({
   drawer: {

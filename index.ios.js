@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native';
-import Main from './components/Main';
+import Main from './src/components/Main';
 
 const {AppRegistry} = React;
 
