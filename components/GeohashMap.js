@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {MapView, StyleSheet, Component} from 'react-native';
 
 import geohashAnnotations from './helpers/geohashAnnotations';

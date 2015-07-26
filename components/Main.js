@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {StyleSheet, View, Component} from 'react-native';
 import Drawer from 'react-native-drawer';
 

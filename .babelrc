@@ -6,6 +6,7 @@
     "es6.arrowFunctions",
     "es6.blockScoping",
     "es6.classes",
+    "es6.constants",
     "es6.destructuring",
     "es6.parameters",
     "es6.properties.computed",
@@ -15,9 +16,7 @@
     "es6.templateLiterals",
     "es7.trailingFunctionCommas",
     "es7.objectRestSpread",
-    "es7.asyncFunctions",
     "es7.classProperties",
-    "regenerator",
     "flow",
     "react",
     "react.displayName"

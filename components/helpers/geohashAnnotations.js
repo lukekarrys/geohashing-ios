@@ -1,3 +1,5 @@
+'use strict';
+
 import geohash from 'geohash-coordinates';
 import Geo from 'geo-graticule';
 import assign from 'lodash/object/assign';

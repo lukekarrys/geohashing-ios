@@ -1,3 +1,5 @@
+'use strict';
+
 import zeroFill from 'zero-fill';
 
 export default (d) => {

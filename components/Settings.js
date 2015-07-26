@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS, Component} from 'react-native';
 import Button from 'react-native-button';
 import assign from 'lodash/object/assign';

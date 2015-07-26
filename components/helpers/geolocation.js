@@ -1,3 +1,5 @@
+'use strict';
+
 export default {
   current (cb) {
     navigator.geolocation.getCurrentPosition((result) =>
