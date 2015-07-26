@@ -1,10 +1,6 @@
-'use strict';
-
-import React from 'react-native';
+import React, {MapView, StyleSheet, Component} from 'react-native';
 
 import geohashAnnotations from './helpers/geohashAnnotations';
-
-const {MapView, StyleSheet} = React;
 
 const styles = StyleSheet.create({
   container: {
@@ -12,30 +8,31 @@ const styles = StyleSheet.create({
   }
 });
 
-const GeohashMap = React.createClass({
-  propTypes: {
+class GeohashMap extends Component {
+  static propTypes = {
     latitude: React.PropTypes.number,
     longitude: React.PropTypes.number,
     date: React.PropTypes.instanceOf(Date),
     days: React.PropTypes.number
-  },
+  }
 
-  getInitialState () {
-    return {
+  constructor (props) {
+    super(props);
+    this.state = {
       annotations: null,
       region: null,
       error: null,
       fetching: null
     };
-  },
+  }
 
   componentDidMount () {
     this._respondToProps(this.props);
-  },
+  }
 
   componentWillReceiveProps (props) {
     this._respondToProps(props);
-  },
+  }
 
   _respondToProps (props) {
     this.setState({fetching: true});
@@ -59,7 +56,7 @@ const GeohashMap = React.createClass({
         });
       }
     });
-  },
+  }
 
   render () {
     return (
@@ -70,6 +67,6 @@ const GeohashMap = React.createClass({
       />
     );
   }
-});
+}
 
 export default GeohashMap;

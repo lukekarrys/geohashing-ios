@@ -1,9 +1,7 @@
-'use strict';
-
-import React, {StyleSheet, View} from 'react-native';
+import React, {StyleSheet, View, Component} from 'react-native';
 import Drawer from 'react-native-drawer';
 
-import Map from './GeohashMap';
+import GeoMap from './GeohashMap';
 import Settings from './Settings';
 import geolocation from './helpers/geolocation';
 
@@ -16,23 +14,24 @@ const styles = StyleSheet.create({
   }
 });
 
-const Main = React.createClass({
-  componentDidMount () {
-    geolocation.current(coords => this.setState(coords));
-  },
-
-  getInitialState () {
-    return {
+class Main extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
       date: new Date(),
       latitude: null,
       longitude: null,
       days: 1
     };
-  },
+  }
+
+  componentDidMount () {
+    geolocation.current(coords => this.setState(coords));
+  }
 
   _onDrawerClose () {
     this.setState(this.refs.settings.getValues());
-  },
+  }
 
   render () {
     const drawerContent = <Settings ref='settings' {...this.state} />;
@@ -43,10 +42,10 @@ const Main = React.createClass({
         content={drawerContent}
         onClose={this._onDrawerClose}
       >
-        <View style={styles.drawer}><Map {...this.state} /></View>
+        <View style={styles.drawer}><GeoMap {...this.state} /></View>
       </Drawer>
     );
   }
-});
+}
 
 export default Main;

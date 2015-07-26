@@ -1,5 +1,3 @@
-'use strict';
-
 const numRegex = /[^-\d\.]/g;
 
 const toNumber = (val) => {

@@ -1,9 +1,7 @@
-'use strict';
-
-import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS} from 'react-native';
+import React, {View, StyleSheet, TextInput, Text, PropTypes, DatePickerIOS, Component} from 'react-native';
 import Button from 'react-native-button';
 import assign from 'lodash/object/assign';
-import Icon from 'react-native-icons';
+import {Icon} from 'react-native-icons';
 
 import geolocation from './helpers/geolocation';
 import toNumber from './helpers/toNumber';
@@ -43,12 +41,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const SettingsRow = React.createClass({
-  propTypes: {
+class SettingsRow extends Component {
+  static propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
     style: View.propTypes.style,
     label: PropTypes.string
-  },
+  }
 
   render () {
     return (
@@ -58,13 +56,13 @@ const SettingsRow = React.createClass({
       </View>
     );
   }
-});
+}
 
-const SettingsInput = React.createClass({
-  propTypes: {
+class SettingsInput extends Component {
+  static propTypes = {
     containerStyle: View.propTypes.style,
     inputStyle: TextInput.propTypes.style
-  },
+  }
 
   render () {
     const {containerStyle, inputStyle, ...rest} = this.props;
@@ -74,13 +72,13 @@ const SettingsInput = React.createClass({
       </View>
     );
   }
-});
+}
 
-const GeoInput = React.createClass({
-  propTypes: {
+class GeoInput extends Component {
+  static propTypes = {
     style: View.propTypes.style,
     name: PropTypes.string
-  },
+  }
 
   render () {
     const {style, name, ...rest} = this.props;
@@ -96,15 +94,15 @@ const GeoInput = React.createClass({
       />
     );
   }
-});
+}
 
-const IconButton = React.createClass({
-  propTypes: {
+class IconButton extends Component {
+  static propTypes = {
     onPress: PropTypes.func,
     name: PropTypes.string,
     size: PropTypes.number,
     style: View.propTypes.style
-  },
+  }
 
   render () {
     return (
@@ -118,47 +116,60 @@ const IconButton = React.createClass({
       </Button>
     );
   }
-});
+}
 
-const Settings = React.createClass({
-  propTypes: {
+class Settings extends Component {
+  static propTypes = {
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     date: PropTypes.instanceOf(Date),
     days: PropTypes.number
-  },
+  }
+
+  constructor (props) {
+    super(props);
+    this.state = this.initialize(props);
+  }
 
   initialize (props) {
     const {latitude, longitude, date, days} = props;
     return {latitude, longitude, date, days};
-  },
-
-  getInitialState () {
-    return this.initialize(this.props);
-  },
+  }
 
   componentWillReceiveProps (props) {
     this.setState(this.initialize(props));
-  },
+  }
 
   setValues (values) {
     if (!this._values) {
       this._values = {};
     }
     assign(this._values, values);
-  },
+  }
 
   getValues () {
     return assign({}, this.state, this._values || {});
-  },
+  }
 
   _handleCurrentLocation () {
     geolocation.current(coords => this.setState(coords));
-  },
+  }
 
   _handleLocationSearch () {
     geolocation.reverse(this.state.location, coords => this.setState(coords));
-  },
+  }
+
+  _handleChange (method, prop, coerce, value) {
+    this['set' + method]({[prop]: coerce ? coerce(value) : coerce});
+  }
+
+  _handleStateChange () {
+    this._handleChange.call(this, ['State'].concat(arguments));
+  }
+
+  _handleValueChange () {
+    this._handleChange.call(this, ['Values'].concat(arguments));
+  }
 
   render () {
     return (
@@ -166,12 +177,14 @@ const Settings = React.createClass({
         <SettingsRow label='Coordinates' style={styles.flexRow}>
           <GeoInput
             name='Latitude'
-            onChangeText={latitude => this.setValues({latitude: toNumber(latitude)})}
+            onChangeText={this._handleValueChange.bind(this, 'latitude', toNumber)}
+            onSubmitEditing={this._handleValueChange.bind(this, 'latitude', toNumber)}
             value={this.state.latitude != null ? this.state.latitude.toString() : ''}
           />
           <GeoInput
             name='Longitude'
-            onChangeText={longitude => this.setValues({longitude: toNumber(longitude)})}
+            onChangeText={this._handleChange.bind(this, 'Values', 'longitude', toNumber)}
+            onSubmitEditing={this._handleChange.bind(this, 'Values', 'longitude', toNumber)}
             value={this.state.longitude != null ? this.state.longitude.toString() : ''}
           />
           <IconButton
@@ -185,8 +198,8 @@ const Settings = React.createClass({
           <SettingsInput
             placeholder='City, State'
             containerStyle={styles.rowInput}
-            onChangeText={location => this.setState({location})}
-            onSubmitEditing={location => this.setState({location})}
+            onChangeText={this._handleChange.bind(this, 'State', 'location')}
+            onSubmitEditing={this._handleChange.bind(this, 'State', 'location')}
             returnKeyType='search'
           />
           <IconButton
@@ -220,6 +233,6 @@ const Settings = React.createClass({
       </View>
     );
   }
-});
+}
 
 export default Settings;
