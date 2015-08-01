@@ -18,6 +18,9 @@ class GeohashMap extends Component {
     days: React.PropTypes.number
   }
 
+  // ==========================
+  // Lifecycle
+  // ==========================
   constructor (props) {
     super(props);
     this.state = {
@@ -60,6 +63,9 @@ class GeohashMap extends Component {
     });
   }
 
+  // ==========================
+  // Render
+  // ==========================
   render () {
     return (
       <MapView

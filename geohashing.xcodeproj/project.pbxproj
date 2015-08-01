@@ -26,6 +26,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		956FEF0C1B64516900C7D0EA /* libReactNativeIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 956FEF0B1B64510F00C7D0EA /* libReactNativeIcons.a */; };
 		956FEF0E1B6451FD00C7D0EA /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 956FEF0D1B6451FD00C7D0EA /* FontAwesome.otf */; };
+		95EA882D1B6C34A200590C24 /* RNGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA882C1B6C34A200590C24 /* RNGeocoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		956FEF061B64510F00C7D0EA /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeIcons.xcodeproj; path = "node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; };
 		956FEF0D1B6451FD00C7D0EA /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FontAwesome.otf"; sourceTree = "<group>"; };
+		95EA882C1B6C34A200590C24 /* RNGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNGeocoder.m; path = "node_modules/react-native-geocoder/RNGeocoder/RNGeocoder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				95EA882C1B6C34A200590C24 /* RNGeocoder.m */,
 				956FEF061B64510F00C7D0EA /* ReactNativeIcons.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				95EA882D1B6C34A200590C24 /* RNGeocoder.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

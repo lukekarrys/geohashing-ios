@@ -1,22 +1,16 @@
 'use strict';
 
-import React, {StyleSheet, View, Component} from 'react-native';
-import Drawer from 'react-native-drawer';
+import React, {Component} from 'react-native';
 
+import Drawer from './CaptureDrawer';
 import GeoMap from './GeohashMap';
-import Settings from './Settings';
+import Settings from './settings/Settings';
 import geolocation from '../helpers/geolocation';
 
-const styles = StyleSheet.create({
-  drawer: {
-    shadowColor: '#000000',
-    shadowOpacity: 0.6,
-    shadowRadius: 15,
-    flex: 1
-  }
-});
-
 class Main extends Component {
+  // ==========================
+  // Lifecycle
+  // ==========================
   constructor (props) {
     super(props);
     this.state = {
@@ -31,21 +25,25 @@ class Main extends Component {
     geolocation.current(coords => this.setState(coords));
   }
 
-  _onDrawerClose () {
+  // ==========================
+  // Bound Handlers
+  // ==========================
+  _onDrawerClose = () => {
     this.setState(this.refs.settings.getValues());
   }
 
+  // ==========================
+  // Render
+  // ==========================
   render () {
-    const drawerContent = <Settings ref='settings' {...this.state} />;
+    const drawerProps = {
+      type: 'static',
+      panOpenMask: 0.1,
+      content: <Settings ref='settings' {...this.state} />,
+      onClose: this._onDrawerClose
+    };
     return (
-      <Drawer
-        type='static'
-        tweenHandler={(ratio) => ({main: {opacity: 1 - ratio}})}
-        content={drawerContent}
-        onClose={this._onDrawerClose}
-      >
-        <View style={styles.drawer}><GeoMap {...this.state} /></View>
-      </Drawer>
+      <Drawer {...drawerProps}><GeoMap {...this.state} /></Drawer>
     );
   }
 }
