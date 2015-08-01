@@ -21,6 +21,7 @@ A module I wrote for this has a `react-native` field in its `package.json` that 
 
 ## Local
 - `npm install`
+- `npm run dev`
 - `npm start`
 - Launch Xcode and build for iOS Simulator
 

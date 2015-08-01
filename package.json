@@ -28,9 +28,10 @@
   ],
   "private": true,
   "scripts": {
+    "dev": "NODE_ENV=development babel-node lib/release",
     "lint": "eslint .",
     "release": "NODE_ENV=production babel-node lib/release && echo 'Open Xcode and build for device'",
-    "start": "NODE_ENV=development babel-node lib/release && ./node_modules/react-native/packager/packager.sh -root .",
+    "start": " ./node_modules/react-native/packager/packager.sh -root .",
     "validate": "npm ls",
     "xcode": "open ./geohashing.xcodeproj"
   }
