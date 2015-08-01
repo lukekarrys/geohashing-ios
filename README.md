@@ -4,9 +4,9 @@ geohashing-ios
 An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
 
-# Screenshot
+# Demo Gif
 
-![screenshot](https://github.com/lukekarrys/geohashing-ios/raw/master/screenshots/geohashing.png)
+TODO
 
 
 # Getting Started
@@ -26,7 +26,7 @@ A module I wrote for this has a `react-native` field in its `package.json` that 
 
 ## Release
 - `npm start`
-- Once server is ready `npm run release`
-- Launch Xcode and do the following from the [React Native Debugging Docs](https://facebook.github.io/react-native/docs/debugging.html#debugging-react-native-apps):
+- `npm run release` (once the packager is ready)
+- Follow the instructions from the [React Native Debugging Docs](https://facebook.github.io/react-native/docs/debugging.html#debugging-react-native-apps) to disable the developer menu:
 
 > To disable the developer menu for production builds, open your project in Xcode and select `Product` → `Scheme` → `Edit Scheme...` (or press `⌘ + <`). Next, select `Run` from the menu on the left and change the Build Configuration to `Release`.

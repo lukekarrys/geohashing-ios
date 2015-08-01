@@ -2,6 +2,8 @@
 
 import React, {StyleSheet, View, TextInput, Component, PropTypes} from 'react-native';
 
+import toInputValue from '../../helpers/toInputValue';
+
 const styles = StyleSheet.create({
   settingsInput: {
     height: 40,
@@ -14,8 +16,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   }
 });
-
-const toInputValue = (val) => val != null ? val.toString() : '';
 
 class SettingsInput extends Component {
   static propTypes = {

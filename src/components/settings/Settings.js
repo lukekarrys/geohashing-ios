@@ -9,6 +9,7 @@ import SettingsInput from './SettingsInput';
 import SettingsRow from './SettingsRow';
 import geolocation from '../../helpers/geolocation';
 import toNumber from '../../helpers/toNumber';
+import toInputValue from '../../helpers/toInputValue';
 
 const styles = StyleSheet.create({
   flexRow: {
@@ -25,17 +26,7 @@ const getNamedProps = (props) => {
   return {latitude, longitude, date, days};
 };
 
-const getText = (event) => {
-  if (event.nativeEvent) {
-    return event.nativeEvent.text;
-  }
-
-  if (typeof event === 'string') {
-    return event;
-  }
-
-  return '';
-};
+const getText = (e) => toInputValue(e.nativeEvent ? e.nativeEvent.text : e);
 
 class Settings extends Component {
   static propTypes = {
@@ -50,6 +41,7 @@ class Settings extends Component {
   // ==========================
   constructor (props) {
     super(props);
+    this._values = {};
     this.state = getNamedProps(props);
   }
 
@@ -61,9 +53,6 @@ class Settings extends Component {
   // Bound Handlers
   // ==========================
   _setValues = (values) => {
-    if (!this._values) {
-      this._values = {};
-    }
     assign(this._values, values);
   }
 
@@ -75,12 +64,20 @@ class Settings extends Component {
     return assign({}, this.state, this._values || {});
   }
 
+  // Setting coordinates requires setting state to update UI and setting
+  // values so they can be fetched when the drawer closes
+  _setCoords = (coords) => {
+    this.setState(coords);
+    this._handleLatitude(coords.latitude);
+    this._handleLocation(coords.longitude);
+  }
+
   _handleCurrentLocation = () => {
-    geolocation.current(coords => this.setState(coords));
+    geolocation.current(this._setCoords);
   }
 
   _handleLocationSearch = (e) => {
-    geolocation.reverse(e ? getText(e) : this._values.location, coords => this.setState(coords));
+    geolocation.reverse(e ? getText(e) : this._values.location, this._setCoords);
   }
 
   _handleLocation = (e) => {
