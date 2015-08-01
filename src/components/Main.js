@@ -40,7 +40,8 @@ class Main extends Component {
       type: 'static',
       panOpenMask: 0.1,
       content: <Settings ref='settings' {...this.state} />,
-      onClose: this._onDrawerClose
+      onClose: this._onDrawerClose,
+      tweenHandler: (r) => ({drawer: {left: -150 * (1 - r)}})
     };
     return (
       <Drawer {...drawerProps}><GeoMap {...this.state} /></Drawer>

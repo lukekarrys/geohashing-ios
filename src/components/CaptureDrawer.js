@@ -6,6 +6,9 @@ import screen from '../helpers/deviceDimensions';
 
 const styles = StyleSheet.create({
   drawer: {
+    shadowColor: '#000000',
+    shadowOpacity: 0.6,
+    shadowRadius: 6,
     flex: 1
   },
   panCapture: {
