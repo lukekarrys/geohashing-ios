@@ -1,11 +1,10 @@
 'use strict';
 
-import React, {Component, View, PropTypes, ActivityIndicatorIOS, StyleSheet} from 'react-native';
-import {BlurView} from 'react-native-blur';
+import React, {Component, View, PropTypes, StyleSheet} from 'react-native';
 import tween from 'react-native-drawer/Tweener';
 
 const styles = StyleSheet.create({
-  background: {
+  fullBackground: {
     position: 'absolute',
     top: 0,
     bottom: 0,
@@ -18,13 +17,16 @@ const styles = StyleSheet.create({
   }
 });
 
-class LoadingOverlay extends Component {
+class FadeOverlay extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired
+    isVisible: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
+    fullBackground: PropTypes.bool
   }
 
   static defaultProps = {
-    isVisible: false
+    isVisible: false,
+    fullBackground: false
   }
 
   componentWillReceiveProps (nextProps) {
@@ -50,18 +52,13 @@ class LoadingOverlay extends Component {
   }
 
   render () {
+    const style = this.props.fullBackground ? styles.fullBackground : null;
     return (
-      <View ref={c => this.overlay = c} style={styles.background}>
-        <BlurView style={styles.background} blurType='light'>
-          <ActivityIndicatorIOS
-            size='large'
-            animating={true}
-            style={styles.spinner}
-          />
-        </BlurView>
+      <View ref={c => this.overlay = c} style={style}>
+        {this.props.children}
       </View>
     );
   }
 }
 
-export default LoadingOverlay;
+export default FadeOverlay;

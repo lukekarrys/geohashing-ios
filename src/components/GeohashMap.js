@@ -4,7 +4,7 @@ import React, {MapView, View, StyleSheet, Component} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
-import LoadingOverlay from './LoadingOverlay';
+import LoadingOverlay from './overlay/LoadingOverlay';
 
 
 const styles = StyleSheet.create({
