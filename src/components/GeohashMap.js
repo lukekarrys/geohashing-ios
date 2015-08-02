@@ -5,7 +5,7 @@ import shallowEqual from 'react-pure-render/shallowEqual';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
 import LoadingOverlay from './overlay/LoadingOverlay';
-
+import ErrorOverlay from './overlay/ErrorOverlay';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,11 +42,11 @@ class GeohashMap extends Component {
   }
 
   _respondToProps (props) {
-    this.setState({loading: true});
+    this.setState({loading: true, error: null});
     geohashAnnotations(props, (err, results) => {
       if (err) {
         this.setState({
-          error: err.message,
+          error: err.message || err,
           loading: false
         });
       }
@@ -77,6 +77,7 @@ class GeohashMap extends Component {
           region={this.state.region}
         />
         <LoadingOverlay isVisible={this.state.loading} />
+        <ErrorOverlay isVisible={!!this.state.error} error={this.state.error} />
       </View>
     );
   }

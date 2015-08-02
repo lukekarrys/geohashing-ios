@@ -30,7 +30,7 @@ class LoadingOverlay extends Component {
 
   render () {
     return (
-      <FadeOverlay fullBackground={true} isVisible={this.props.isVisible}>
+      <FadeOverlay fullBackground={true} isVisible={this.props.isVisible} fadeIn={100} fadeOut={500}>
         <BlurView style={styles.background} blurType='light'>
           <ActivityIndicatorIOS
             size='large'
