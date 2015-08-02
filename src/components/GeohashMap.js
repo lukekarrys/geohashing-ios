@@ -1,8 +1,11 @@
 'use strict';
 
-import React, {MapView, StyleSheet, Component} from 'react-native';
+import React, {MapView, View, StyleSheet, Component} from 'react-native';
+import shallowEqual from 'react-pure-render/shallowEqual';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
+import LoadingOverlay from './LoadingOverlay';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -18,39 +21,38 @@ class GeohashMap extends Component {
     days: React.PropTypes.number
   }
 
+  state = {
+    annotations: null,
+    region: null,
+    error: null,
+    loading: false
+  }
+
   // ==========================
   // Lifecycle
   // ==========================
-  constructor (props) {
-    super(props);
-    this.state = {
-      annotations: null,
-      region: null,
-      error: null,
-      fetching: null
-    };
-  }
-
   componentDidMount () {
     this._respondToProps(this.props);
   }
 
   componentWillReceiveProps (props) {
-    this._respondToProps(props);
+    if (!shallowEqual(props, this.props)) {
+      this._respondToProps(props);
+    }
   }
 
   _respondToProps (props) {
-    this.setState({fetching: true});
+    this.setState({loading: true});
     geohashAnnotations(props, (err, results) => {
       if (err) {
         this.setState({
           error: err.message,
-          fetching: false
+          loading: false
         });
       }
       else {
         this.setState({
-          fetching: false,
+          loading: false,
           annotations: results.annotations,
           region: {
             latitude: results.center.latitude,
@@ -68,11 +70,14 @@ class GeohashMap extends Component {
   // ==========================
   render () {
     return (
-      <MapView
-        style={styles.container}
-        annotations={this.state.annotations}
-        region={this.state.region}
-      />
+      <View style={styles.container}>
+        <MapView
+          style={styles.container}
+          annotations={this.state.annotations}
+          region={this.state.region}
+        />
+        <LoadingOverlay isVisible={this.state.loading} />
+      </View>
     );
   }
 }
