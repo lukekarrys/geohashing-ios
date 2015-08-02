@@ -8,19 +8,16 @@ import Settings from './settings/Settings';
 import geolocation from '../helpers/geolocation';
 
 class Main extends Component {
+  state = {
+    date: new Date(),
+    latitude: null,
+    longitude: null,
+    days: 3
+  }
+
   // ==========================
   // Lifecycle
   // ==========================
-  constructor (props) {
-    super(props);
-    this.state = {
-      date: new Date(),
-      latitude: null,
-      longitude: null,
-      days: 1
-    };
-  }
-
   componentDidMount () {
     geolocation.current(coords => this.setState(coords));
   }
@@ -32,6 +29,22 @@ class Main extends Component {
     this.setState(this.refs.settings.getValues());
   }
 
+  _onDrawerPan = (r) => {
+    return {
+      drawer: {
+        opacity: r,
+        style: {
+          transform: [
+            // Left parallax from -150
+            {translateX: -150 * (1 - r)},
+            // Scale up from 95%
+            {scale: 0.95 + (r * 0.05)}
+          ]
+        }
+      }
+    };
+  }
+
   // ==========================
   // Render
   // ==========================
@@ -41,10 +54,12 @@ class Main extends Component {
       panOpenMask: 0.1,
       content: <Settings ref='settings' {...this.state} />,
       onClose: this._onDrawerClose,
-      tweenHandler: (r) => ({drawer: {left: -150 * (1 - r)}})
+      tweenHandler: this._onDrawerPan
     };
     return (
-      <Drawer {...drawerProps}><GeoMap {...this.state} /></Drawer>
+      <Drawer {...drawerProps}>
+        <GeoMap {...this.state} />
+      </Drawer>
     );
   }
 }
