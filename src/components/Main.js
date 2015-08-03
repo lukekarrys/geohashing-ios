@@ -32,13 +32,12 @@ class Main extends Component {
   _onDrawerPan = (r) => {
     return {
       drawer: {
-        opacity: r,
         style: {
           transform: [
             // Left parallax from -150
             {translateX: -150 * (1 - r)},
             // Scale up from 95%
-            {scale: 0.95 + (r * 0.05)}
+            {scale: 0.9 + (r * 0.1)}
           ]
         }
       }
