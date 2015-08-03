@@ -34,17 +34,8 @@ const fetch = (props, cb) => {
   const location = {latitude, longitude};
 
   if (latitude && longitude && date) {
-    geohash.latest({
-      date: yyyymmdd(date),
-      days,
-      location
-    }, (err, results) => {
-      if (err) {
-        cb(err);
-      }
-      else {
-        cb(null, toAnnotations(new Geo(location), results));
-      }
+    geohash.latest({days, location, date: yyyymmdd(date)}, (err, results) => {
+      cb(err, err ? null : toAnnotations(new Geo(location), results));
     });
   }
 };
