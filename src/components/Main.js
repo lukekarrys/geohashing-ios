@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react-native';
 
+import ErrorOverlay from './overlay/ErrorOverlay';
 import Drawer from './CaptureDrawer';
 import GeoMap from './GeohashMap';
 import Settings from './settings/Settings';
@@ -12,6 +13,7 @@ class Main extends Component {
     date: new Date(),
     latitude: null,
     longitude: null,
+    error: null,
     days: 3
   }
 
@@ -19,7 +21,10 @@ class Main extends Component {
   // Lifecycle
   // ==========================
   componentDidMount () {
-    geolocation.current(coords => this.setState(coords));
+    geolocation.current(
+      coords => this.setState(coords),
+      error => this.setState({error})
+    );
   }
 
   // ==========================
@@ -58,6 +63,7 @@ class Main extends Component {
     return (
       <Drawer {...drawerProps}>
         <GeoMap {...this.state} />
+        <ErrorOverlay error={this.state.error} />
       </Drawer>
     );
   }

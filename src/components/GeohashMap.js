@@ -2,6 +2,7 @@
 
 import React, {MapView, View, StyleSheet, Component} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
+import assign from 'lodash/object/assign';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
 import LoadingOverlay from './overlay/LoadingOverlay';
@@ -41,18 +42,31 @@ class GeohashMap extends Component {
     }
   }
 
+  _validProps (props) {
+    return props.latitude != null &&
+      props.longitude != null &&
+      props.date != null &&
+      props.days != null;
+  }
+
   _respondToProps (props) {
+    // Always reset loading/error
     this.setState({loading: true, error: null});
-    geohashAnnotations(props, (err, results) => {
-      if (err) {
-        this.setState({
-          error: err.message || err,
-          loading: false
-        });
+
+    // If we dont have the props to fetch the geohash
+    // then bail during the loading stage since a prop
+    // update will eventually get us out of loading
+    if (!this._validProps(props)) { return; }
+
+    // Get out geohash and set the appropriate state
+    geohashAnnotations(props, (error, results) => {
+      const state = {loading: false};
+
+      if (error) {
+        assign(state, {error});
       }
       else {
-        this.setState({
-          loading: false,
+        assign(state, {
           annotations: results.annotations,
           region: {
             latitude: results.center.latitude,
@@ -62,6 +76,8 @@ class GeohashMap extends Component {
           }
         });
       }
+
+      this.setState(state);
     });
   }
 
@@ -69,15 +85,16 @@ class GeohashMap extends Component {
   // Render
   // ==========================
   render () {
+    const {loading, error, annotations, region} = this.state;
     return (
       <View style={styles.container}>
         <MapView
           style={styles.container}
-          annotations={this.state.annotations}
-          region={this.state.region}
+          annotations={annotations}
+          region={region}
         />
-        <LoadingOverlay isVisible={this.state.loading} />
-        <ErrorOverlay isVisible={!!this.state.error} error={this.state.error} />
+        <LoadingOverlay isVisible={loading} />
+        <ErrorOverlay error={error} />
       </View>
     );
   }

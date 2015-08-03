@@ -21,19 +21,14 @@ const styles = StyleSheet.create({
 
 class ErrorOverlay extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
-    error: PropTypes.string.isRequired
-  }
-
-  static defaultProps = {
-    isVisible: false
+    error: PropTypes.instanceOf(Error)
   }
 
   render () {
     return (
-      <FadeOverlay isVisible={this.props.isVisible} fadeIn={1000} fadeOut={100}>
+      <FadeOverlay isVisible={!!this.props.error} fadeIn={1000} fadeOut={100}>
         <VibrancyView style={styles.background} blurType='dark'>
-          <Text>{this.props.error}</Text>
+          <Text>{this.props.error && this.props.error.message}</Text>
         </VibrancyView>
       </FadeOverlay>
     );
