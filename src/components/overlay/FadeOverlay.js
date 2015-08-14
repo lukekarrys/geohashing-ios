@@ -41,14 +41,14 @@ class FadeOverlay extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.isVisible && !this.props.isVisible) {
-      this._fadeOverlay(0, 1, this.props.fadeIn);
+      this.fadeOverlay(0, 1, this.props.fadeIn);
     }
     else if (!nextProps.isVisible && this.props.isVisible) {
-      this._fadeOverlay(1, 0, this.props.fadeOut);
+      this.fadeOverlay(1, 0, this.props.fadeOut);
     }
   }
 
-  _fadeOverlay = (start, end, duration) => {
+  fadeOverlay = (start, end, duration) => {
     const {overlay: o} = this;
 
     this.setState({isFading: true});
@@ -72,7 +72,7 @@ class FadeOverlay extends Component {
     const opacity = this.props.isVisible ? {opacity: 1} : {opacity: 0};
     const style = [styles.background, propStyle, this.state.isFading ? null : opacity];
     return (
-      <View ref={c => this.overlay = c} style={style}>
+      <View ref={(c) => this.overlay = c} style={style}>
         {this.props.children}
       </View>
     );

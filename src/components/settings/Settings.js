@@ -41,7 +41,7 @@ class Settings extends Component {
   // ==========================
   constructor (props) {
     super(props);
-    this._values = {};
+    this.values = {};
     this.state = getNamedProps(props);
   }
 
@@ -52,8 +52,8 @@ class Settings extends Component {
   // ==========================
   // Bound Handlers
   // ==========================
-  _setValues = (values) => {
-    assign(this._values, values);
+  setValues = (values) => {
+    assign(this.values, values);
   }
 
   // This public to allow for the parent view to get the latest data from
@@ -61,42 +61,42 @@ class Settings extends Component {
   // the settings drawer is being closed. And since inputs are controlled, we
   // cant use setState or we get dropped keystrokes.
   getValues = () => {
-    return assign({}, this.state, this._values || {});
+    return assign({}, this.state, this.values || {});
   }
 
   // Setting coordinates requires setting state to update UI and setting
   // values so they can be fetched when the drawer closes
-  _setCoords = (coords) => {
+  setCoords = (coords) => {
     this.setState(coords);
-    this._handleLatitude(coords.latitude);
-    this._handleLocation(coords.longitude);
+    this.handleLatitude(coords.latitude);
+    this.handleLocation(coords.longitude);
   }
 
-  _handleCurrentLocation = () => {
-    geolocation.current(this._setCoords);
+  handleCurrentLocation = () => {
+    geolocation.current(this.setCoords);
   }
 
-  _handleLocationSearch = (e) => {
-    geolocation.reverse(e ? getText(e) : this._values.location, this._setCoords);
+  handleLocationSearch = (e) => {
+    geolocation.reverse(e ? getText(e) : this.values.location, this.setCoords);
   }
 
-  _handleLocation = (e) => {
-    this._setValues({location: getText(e)});
+  handleLocation = (e) => {
+    this.setValues({location: getText(e)});
   }
 
-  _handleLatitude = (e) => {
-    this._setValues({latitude: toNumber(getText(e))});
+  handleLatitude = (e) => {
+    this.setValues({latitude: toNumber(getText(e))});
   }
 
-  _handleLongitude = (e) => {
-    this._setValues({longitude: toNumber(getText(e))});
+  handleLongitude = (e) => {
+    this.setValues({longitude: toNumber(getText(e))});
   }
 
-  _handleDays = (e) => {
-    this._setValues({days: toNumber(getText(e))});
+  handleDays = (e) => {
+    this.setValues({days: toNumber(getText(e))});
   }
 
-  _handleDate = (date) => {
+  handleDate = (date) => {
     this.setState({date});
   }
 
@@ -109,18 +109,18 @@ class Settings extends Component {
         <SettingsRow label='Coordinates' style={styles.flexRow}>
           <GeoInput
             name='Latitude'
-            onChangeText={this._handleLatitude}
-            onSubmitEditing={this._handleLatitude}
+            onChangeText={this.handleLatitude}
+            onSubmitEditing={this.handleLatitude}
             value={this.state.latitude}
           />
           <GeoInput
             name='Longitude'
-            onChangeText={this._handleLongitude}
-            onSubmitEditing={this._handleLongitude}
+            onChangeText={this.handleLongitude}
+            onSubmitEditing={this.handleLongitude}
             value={this.state.longitude}
           />
           <IconButton
-            onPress={this._handleCurrentLocation}
+            onPress={this.handleCurrentLocation}
             name='location-arrow'
             size={20}
           />
@@ -130,12 +130,12 @@ class Settings extends Component {
           <SettingsInput
             placeholder='City, State'
             containerStyle={styles.rowInput}
-            onChangeText={this._handleLocation}
-            onSubmitEditing={this._handleLocationSearch}
+            onChangeText={this.handleLocation}
+            onSubmitEditing={this.handleLocationSearch}
             returnKeyType='search'
           />
           <IconButton
-            onPress={this._handleLocationSearch}
+            onPress={this.handleLocationSearch}
             name='search'
             size={20}
           />
@@ -148,7 +148,7 @@ class Settings extends Component {
             // to clear it. Currently 'numbers-and-puncutation' is the only
             // numbers related keyboard that has a return key to close the keyboard
             keyboardType='numbers-and-punctuation'
-            onChangeText={this._handleDays}
+            onChangeText={this.handleDays}
             value={this.state.days}
           />
         </SettingsRow>
@@ -159,7 +159,7 @@ class Settings extends Component {
             timeZoneOffsetInMinutes={-1 * new Date().getTimezoneOffset()}
             maximumDate={new Date()}
             date={this.state.date}
-            onDateChange={this._handleDate}
+            onDateChange={this.handleDate}
           />
         </SettingsRow>
       </View>

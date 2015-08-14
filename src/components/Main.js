@@ -22,19 +22,19 @@ class Main extends Component {
   // ==========================
   componentDidMount () {
     geolocation.current(
-      coords => this.setState(coords),
-      error => this.setState({error})
+      (coords) => this.setState(coords),
+      (error) => this.setState({error})
     );
   }
 
   // ==========================
   // Bound Handlers
   // ==========================
-  _onDrawerClose = () => {
+  onDrawerClose = () => {
     this.setState(this.refs.settings.getValues());
   }
 
-  _onDrawerPan = (r) => {
+  onDrawerPan = (r) => {
     return {
       drawer: {
         style: {
@@ -57,8 +57,8 @@ class Main extends Component {
       type: 'static',
       panOpenMask: 0.1,
       content: <Settings ref='settings' {...this.state} />,
-      onClose: this._onDrawerClose,
-      tweenHandler: this._onDrawerPan
+      onClose: this.onDrawerClose,
+      tweenHandler: this.onDrawerPan
     };
     return (
       <Drawer {...drawerProps}>

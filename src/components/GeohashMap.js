@@ -33,30 +33,30 @@ class GeohashMap extends Component {
   // Lifecycle
   // ==========================
   componentDidMount () {
-    this._respondToProps(this.props);
+    this.respondToProps(this.props);
   }
 
   componentWillReceiveProps (props) {
     if (!shallowEqual(props, this.props)) {
-      this._respondToProps(props);
+      this.respondToProps(props);
     }
   }
 
-  _validProps (props) {
+  validProps (props) {
     return props.latitude != null &&
       props.longitude != null &&
       props.date != null &&
       props.days != null;
   }
 
-  _respondToProps (props) {
+  respondToProps (props) {
     // Always reset loading/error
     this.setState({loading: true, error: null});
 
     // If we dont have the props to fetch the geohash
     // then bail during the loading stage since a prop
     // update will eventually get us out of loading
-    if (!this._validProps(props)) { return; }
+    if (!this.validProps(props)) { return; }
 
     // Get out geohash and set the appropriate state
     geohashAnnotations(props, (error, results) => {
