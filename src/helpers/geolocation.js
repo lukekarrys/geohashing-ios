@@ -5,10 +5,8 @@ import RNGeocoder from 'react-native-geocoder';
 export default {
   current (cb) {
     navigator.geolocation.getCurrentPosition((result) => {
-      cb({
-        latitude: result.coords.latitude,
-        longitude: result.coords.longitude
-      });
+      const {latitude, longitude} = result.coords;
+      cb({latitude, longitude});
     });
   },
 
@@ -16,10 +14,8 @@ export default {
     if (typeof location === 'string' && location) {
       RNGeocoder.geocodeAddress(location, (_, data) => {
         data = Array.isArray(data) ? data[0] : data;
-        cb({
-          latitude: data.location.lat,
-          longitude: data.location.lng
-        });
+        const {lat: latitude, lng: longitude} = data.location;
+        cb({latitude, longitude});
       });
     }
   }
