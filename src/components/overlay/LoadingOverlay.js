@@ -5,6 +5,9 @@ import {BlurView} from 'react-native-blur';
 
 import FadeOverlay from './FadeOverlay';
 
+const FADE_IN_LENGTH = 100;
+const FADE_OUT_LENGTH = 500;
+
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
@@ -28,17 +31,18 @@ class LoadingOverlay extends Component {
     isVisible: false
   }
 
-  render () {
+  render() {
     return (
       <FadeOverlay
-        fullBackground={true}
+        fullBackground
         isVisible={this.props.isVisible}
-        fadeIn={100}
-        fadeOut={500}>
+        fadeIn={FADE_IN_LENGTH}
+        fadeOut={FADE_OUT_LENGTH}
+      >
         <BlurView style={styles.background} blurType='light'>
           <ActivityIndicatorIOS
             size='large'
-            animating={true}
+            animating
             style={styles.spinner}
           />
         </BlurView>

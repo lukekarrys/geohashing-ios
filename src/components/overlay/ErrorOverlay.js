@@ -5,6 +5,9 @@ import {VibrancyView} from 'react-native-blur';
 
 import FadeOverlay from './FadeOverlay';
 
+const FADE_IN_LENGTH = 1000;
+const FADE_OUT_LENGTH = 100;
+
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
@@ -24,9 +27,9 @@ class ErrorOverlay extends Component {
     error: PropTypes.instanceOf(Error)
   }
 
-  render () {
+  render() {
     return (
-      <FadeOverlay isVisible={!!this.props.error} fadeIn={1000} fadeOut={100}>
+      <FadeOverlay isVisible={!!this.props.error} fadeIn={FADE_IN_LENGTH} fadeOut={FADE_OUT_LENGTH}>
         <VibrancyView style={styles.background} blurType='dark'>
           <Text>{this.props.error && this.props.error.message}</Text>
         </VibrancyView>

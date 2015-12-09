@@ -21,10 +21,10 @@ class SettingsInput extends Component {
   static propTypes = {
     containerStyle: View.propTypes.style,
     inputStyle: TextInput.propTypes.style,
-    value: PropTypes.any
+    value: PropTypes.string
   }
 
-  render () {
+  render() {
     const {containerStyle, inputStyle, value, ...rest} = this.props;
     return (
       <View style={[styles.settingsInputContainer, containerStyle]}>

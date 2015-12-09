@@ -19,13 +19,17 @@ class IconButton extends Component {
     size: PropTypes.number
   }
 
-  render () {
+  static defaultProps = {
+    size: 20
+  }
+
+  render() {
     return (
       <Button onPress={this.props.onPress}>
         <View>
           <Icon
             color='#ffffff'
-            name={'fontawesome|' + this.props.name}
+            name={`fontawesome|${this.props.name}`}
             size={this.props.size}
             style={styles.iconButton}
           />

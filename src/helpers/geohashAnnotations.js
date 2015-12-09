@@ -8,14 +8,12 @@ import flatten from 'lodash/array/flatten';
 
 import yyyymmdd from './yyyymmdd';
 
-const toAnnotation = (title, from, point) => {
-  return {
-    title,
-    subtitle: from.milesFrom(point).toFixed(1) + 'mi',
-    latitude: point[0],
-    longitude: point[1]
-  };
-};
+const toAnnotation = (title, from, point) => ({
+  title,
+  subtitle: `${from.milesFrom(point).toFixed(1)}mi`,
+  latitude: point[0],
+  longitude: point[1]
+});
 
 const toAnnotations = (location, results) => {
   const [latitude, longitude] = location.graticuleCenter();

@@ -17,7 +17,7 @@ class GeoInput extends Component {
     name: PropTypes.string
   }
 
-  render () {
+  render() {
     const {style, name, ...rest} = this.props;
     return (
       <SettingsInput

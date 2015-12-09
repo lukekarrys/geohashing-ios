@@ -2,8 +2,6 @@
 
 const numRegex = /[^-\d\.]/g;
 
-const toNumber = (val) => {
-  return Number((val + '').replace(numRegex, ''));
-};
+const toNumber = (val) => Number((val.toString()).replace(numRegex, ''));
 
 export default toNumber;

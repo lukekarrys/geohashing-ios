@@ -19,7 +19,7 @@ class SettingsRow extends Component {
     label: PropTypes.string
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.settingsRow}>
         <Text style={styles.settingsRowLabel}>{this.props.label}</Text>

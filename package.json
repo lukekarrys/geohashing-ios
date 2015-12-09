@@ -16,13 +16,13 @@
     "zero-fill": "^2.2.1"
   },
   "devDependencies": {
-    "@lukekarrys/eslint-config": "^1.0.6",
+    "@lukekarrys/eslint-config": "^1.0.32",
     "async": "^1.4.2",
     "babel": "^5.8.21",
-    "babel-eslint": "^4.0.5",
-    "eslint": "^1.1.0",
-    "eslint-plugin-classes": "0.0.4",
-    "eslint-plugin-react": "^3.2.2",
+    "babel-eslint": "^5.0.0-beta4",
+    "eslint": "^1.10.3",
+    "eslint-plugin-classes": "^0.1.1",
+    "eslint-plugin-react": "^3.11.3",
     "precommit-hook": "^3.0.0"
   },
   "main": "index.ios.js",

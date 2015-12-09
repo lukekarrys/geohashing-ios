@@ -39,13 +39,13 @@ class Settings extends Component {
   // ==========================
   // Lifecycle
   // ==========================
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.values = {};
     this.state = getNamedProps(props);
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     this.setState(getNamedProps(props));
   }
 
@@ -60,9 +60,7 @@ class Settings extends Component {
   // settings. Some of the input events dont fire if they are still active as
   // the settings drawer is being closed. And since inputs are controlled, we
   // cant use setState or we get dropped keystrokes.
-  getValues = () => {
-    return assign({}, this.state, this.values || {});
-  }
+  getValues = () => assign({}, this.state, this.values || {})
 
   // Setting coordinates requires setting state to update UI and setting
   // values so they can be fetched when the drawer closes
@@ -103,7 +101,7 @@ class Settings extends Component {
   // ==========================
   // Render
   // ==========================
-  render () {
+  render() {
     return (
       <View style={{marginTop: 20}}>
         <SettingsRow label='Coordinates' style={styles.flexRow}>
@@ -122,7 +120,6 @@ class Settings extends Component {
           <IconButton
             onPress={this.handleCurrentLocation}
             name='location-arrow'
-            size={20}
           />
         </SettingsRow>
 
@@ -137,7 +134,6 @@ class Settings extends Component {
           <IconButton
             onPress={this.handleLocationSearch}
             name='search'
-            size={20}
           />
         </SettingsRow>
 

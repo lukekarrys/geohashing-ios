@@ -31,7 +31,7 @@ class CaptureDrawer extends Component {
     panOpenMask: PropTypes.number.isRequired
   }
 
-  render () {
+  render() {
     const {children, ...drawerProps} = this.props;
     const panOpenWidth = screen.width * drawerProps.panOpenMask;
     return (

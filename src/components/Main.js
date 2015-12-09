@@ -20,7 +20,7 @@ class Main extends Component {
   // ==========================
   // Lifecycle
   // ==========================
-  componentDidMount () {
+  componentDidMount() {
     geolocation.current(
       (coords) => this.setState(coords),
       (error) => this.setState({error})
@@ -34,25 +34,23 @@ class Main extends Component {
     this.setState(this.refs.settings.getValues());
   }
 
-  onDrawerPan = (r) => {
-    return {
-      drawer: {
-        style: {
-          transform: [
-            // Left parallax from -150
-            {translateX: -150 * (1 - r)},
-            // Scale up from 95%
-            {scale: 0.9 + (r * 0.1)}
-          ]
-        }
+  onDrawerPan = (r) => ({
+    drawer: {
+      style: {
+        transform: [
+          // Left parallax from -150
+          {translateX: -150 * (1 - r)}, // eslint-disable-line no-magic-numbers
+          // Scale up from 95%
+          {scale: 0.9 + (r * 0.1)} // eslint-disable-line no-magic-numbers
+        ]
       }
-    };
-  }
+    }
+  })
 
   // ==========================
   // Render
   // ==========================
-  render () {
+  render() {
     const drawerProps = {
       type: 'static',
       panOpenMask: 0.1,
