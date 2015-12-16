@@ -21,7 +21,8 @@
     "eslint": "^1.10.3",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-react": "^3.11.3",
-    "precommit-hook": "^3.0.0"
+    "precommit-hook": "^3.0.0",
+    "react-native-cli": "^0.1.7"
   },
   "enginges": {
     "node": "^5.0.0"
@@ -33,11 +34,14 @@
   ],
   "private": true,
   "scripts": {
+    "bundle": "npm run bundle.ios && npm run bundle.android",
+    "bundle.android": "echo 'Not building Android'",
+    "bundle.ios": "NODE_ENV=production react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && node lib/release",
     "lint": "eslint .",
-    "packager": "./node_modules/react-native/packager/packager.sh",
     "postinstall": "npm run rm.babelrc && npm run rm.jshint",
     "rm.babelrc": "find node_modules -type f -name .babelrc | grep -v /react-native/ | xargs rm",
     "rm.jshint": "find . -type f -name '.jshint*' -maxdepth 1 | xargs rm",
+    "start": "node lib/release && react-native start",
     "validate": "npm ls >/dev/null",
     "xcode": "open ./ios/geohashing.xcodeproj"
   }

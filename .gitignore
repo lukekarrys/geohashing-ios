@@ -32,3 +32,7 @@ local.properties
 #
 node_modules/
 npm-debug.log
+
+# Generated files
+#
+ios/**/main.jsbundle
