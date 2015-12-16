@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class GeohashMap extends Component {
+export default class GeohashMap extends Component {
   static propTypes = {
     latitude: React.PropTypes.number,
     longitude: React.PropTypes.number,
@@ -99,5 +99,3 @@ class GeohashMap extends Component {
     );
   }
 }
-
-export default GeohashMap;

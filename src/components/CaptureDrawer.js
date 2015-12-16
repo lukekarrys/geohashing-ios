@@ -2,6 +2,7 @@
 
 import React, {StyleSheet, View, Component, PropTypes} from 'react-native';
 import Drawer from 'react-native-drawer';
+
 import screen from '../helpers/deviceDimensions';
 
 const styles = StyleSheet.create({
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 // against the left side of the screen. This will capture any touches and not
 // propogate them to any other views meaning props.children wont get panned
 // while the drawer is being panned.
-class CaptureDrawer extends Component {
+export default class CaptureDrawer extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     panOpenMask: PropTypes.number.isRequired
@@ -44,5 +45,3 @@ class CaptureDrawer extends Component {
     );
   }
 }
-
-export default CaptureDrawer;

@@ -28,7 +28,7 @@ const getNamedProps = (props) => {
 
 const getText = (e) => toInputValue(e.nativeEvent ? e.nativeEvent.text : e);
 
-class Settings extends Component {
+export default class Settings extends Component {
   static propTypes = {
     latitude: PropTypes.number,
     longitude: PropTypes.number,
@@ -158,9 +158,8 @@ class Settings extends Component {
             onDateChange={this.handleDate}
           />
         </SettingsRow>
+
       </View>
     );
   }
 }
-
-export default Settings;

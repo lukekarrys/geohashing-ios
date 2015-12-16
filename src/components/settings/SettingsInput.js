@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class SettingsInput extends Component {
+export default class SettingsInput extends Component {
   static propTypes = {
     containerStyle: View.propTypes.style,
     inputStyle: TextInput.propTypes.style,
@@ -37,5 +37,3 @@ class SettingsInput extends Component {
     );
   }
 }
-
-export default SettingsInput;

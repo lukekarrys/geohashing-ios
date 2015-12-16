@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class FadeOverlay extends Component {
+export default class FadeOverlay extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
@@ -41,10 +41,10 @@ class FadeOverlay extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isVisible && !this.props.isVisible) {
-      this.fadeOverlay(0, 1, this.props.fadeIn);
+      this.fadeOverlay(0, 1, nextProps.fadeIn);
     }
     else if (!nextProps.isVisible && this.props.isVisible) {
-      this.fadeOverlay(1, 0, this.props.fadeOut);
+      this.fadeOverlay(1, 0, nextProps.fadeOut);
     }
   }
 
@@ -52,17 +52,17 @@ class FadeOverlay extends Component {
     const {overlay: o} = this;
 
     this.setState({isFading: true});
-    o.setNativeProps({opacity: start});
+    o.setNativeProps({style: {opacity: start}});
 
     tween({
       start,
       end,
       duration,
       easingType: 'linear',
-      onFrame: (opacity) => o.setNativeProps({opacity}),
+      onFrame: (opacity) => o.setNativeProps({style: {opacity}}),
       onEnd: () => {
         this.setState({isFading: false});
-        o.setNativeProps({opacity: end});
+        o.setNativeProps({style: {opacity: end}});
       }
     });
   }
@@ -76,11 +76,9 @@ class FadeOverlay extends Component {
     const opacity = this.props.isVisible ? {opacity: 1} : {opacity: 0};
     const style = [styles.background, propStyle, this.state.isFading ? null : opacity];
     return (
-      <View ref={this.setOverlay} style={style}>
+      <View ref={this.setOverlay} style={style} pointerEvents='none'>
         {this.props.children}
       </View>
     );
   }
 }
-
-export default FadeOverlay;

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class IconButton extends Component {
+export default class IconButton extends Component {
   static propTypes = {
     onPress: PropTypes.func,
     name: PropTypes.string,
@@ -38,5 +38,3 @@ class IconButton extends Component {
     );
   }
 }
-
-export default IconButton;

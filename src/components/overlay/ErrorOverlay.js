@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class ErrorOverlay extends Component {
+export default class ErrorOverlay extends Component {
   static propTypes = {
     error: PropTypes.instanceOf(Error)
   }
@@ -37,5 +37,3 @@ class ErrorOverlay extends Component {
     );
   }
 }
-
-export default ErrorOverlay;

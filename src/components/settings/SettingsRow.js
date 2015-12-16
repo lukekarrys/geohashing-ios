@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class SettingsRow extends Component {
+export default class SettingsRow extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
     style: View.propTypes.style,
@@ -28,5 +28,3 @@ class SettingsRow extends Component {
     );
   }
 }
-
-export default SettingsRow;

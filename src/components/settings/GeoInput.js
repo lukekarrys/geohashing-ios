@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class GeoInput extends Component {
+export default class GeoInput extends Component {
   static propTypes = {
     style: View.propTypes.style,
     name: PropTypes.string
@@ -32,5 +32,3 @@ class GeoInput extends Component {
     );
   }
 }
-
-export default GeoInput;

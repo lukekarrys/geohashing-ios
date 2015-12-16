@@ -8,7 +8,7 @@ import GeoMap from './GeohashMap';
 import Settings from './settings/Settings';
 import geolocation from '../helpers/geolocation';
 
-class Main extends Component {
+export default class Main extends Component {
   state = {
     date: new Date(),
     latitude: null,
@@ -66,5 +66,3 @@ class Main extends Component {
     );
   }
 }
-
-export default Main;

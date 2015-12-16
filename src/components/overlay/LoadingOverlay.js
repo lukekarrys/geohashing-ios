@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class LoadingOverlay extends Component {
+export default class LoadingOverlay extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired
   }
@@ -50,5 +50,3 @@ class LoadingOverlay extends Component {
     );
   }
 }
-
-export default LoadingOverlay;
