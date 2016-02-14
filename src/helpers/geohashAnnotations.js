@@ -2,9 +2,9 @@
 
 import geohash from 'geohash-coordinates';
 import Geo from 'geo-graticule';
-import assign from 'lodash/object/assign';
-import partial from 'lodash/function/partial';
-import flatten from 'lodash/array/flatten';
+import assign from 'lodash/assign';
+import partial from 'lodash/partial';
+import flatten from 'lodash/flatten';
 
 import yyyymmdd from './yyyymmdd';
 

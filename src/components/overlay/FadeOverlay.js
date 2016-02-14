@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component, View, PropTypes, StyleSheet} from 'react-native';
-import tween from 'react-native-drawer/Tweener';
+import tween from 'react-native-drawer/tweener';
 
 const styles = StyleSheet.create({
   fullBackground: {

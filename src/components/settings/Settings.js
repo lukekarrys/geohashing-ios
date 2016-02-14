@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {StyleSheet, View, PropTypes, DatePickerIOS, Component} from 'react-native';
-import assign from 'lodash/object/assign';
+import assign from 'lodash/assign';
 
 import GeoInput from './GeoInput';
 import IconButton from './IconButton';

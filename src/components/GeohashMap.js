@@ -2,7 +2,7 @@
 
 import React, {MapView, View, StyleSheet, Component} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
-import assign from 'lodash/object/assign';
+import assign from 'lodash/assign';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
 import LoadingOverlay from './overlay/LoadingOverlay';
