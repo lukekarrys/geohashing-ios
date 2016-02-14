@@ -14,7 +14,7 @@ export default {
     if (typeof location === 'string' && location) {
       RNGeocoder.geocodeAddress(location, (_, data) => {
         data = Array.isArray(data) ? data[0] : data;
-        const {lat: latitude, lng: longitude} = data.location;
+        const {lat: latitude, lng: longitude} = data.position;
         cb({latitude, longitude});
       });
     }

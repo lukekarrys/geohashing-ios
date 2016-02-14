@@ -75,7 +75,7 @@ export default class Settings extends Component {
   }
 
   handleLocationSearch = (e) => {
-    geolocation.reverse(e ? getText(e) : this.values.location, this.setCoords);
+    geolocation.reverse(this.values.location, this.setCoords);
   }
 
   handleLocation = (e) => {

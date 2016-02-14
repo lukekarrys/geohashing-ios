@@ -9,12 +9,15 @@ import Settings from './settings/Settings';
 import geolocation from '../helpers/geolocation';
 
 export default class Main extends Component {
-  state = {
-    date: new Date(),
-    latitude: null,
-    longitude: null,
-    error: null,
-    days: 3
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+      latitude: null,
+      longitude: null,
+      error: null,
+      days: 3
+    };
   }
 
   // ==========================

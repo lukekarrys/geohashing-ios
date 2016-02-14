@@ -19,7 +19,7 @@ export default class SettingsInput extends Component {
   static propTypes = {
     containerStyle: View.propTypes.style,
     inputStyle: TextInput.propTypes.style,
-    defaultValue: PropTypes.string
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }
 
   render() {
