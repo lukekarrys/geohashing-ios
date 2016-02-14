@@ -21,8 +21,7 @@
     "eslint": "^2.0.0",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-react": "^3.16.1",
-    "precommit-hook": "^3.0.0",
-    "react-native-cli": "^0.1.10"
+    "precommit-hook": "^3.0.0"
   },
   "enginges": {
     "node": "^5.0.0"
@@ -35,12 +34,12 @@
   "private": true,
   "scripts": {
     "bundle": "npm run bundle.ios",
-    "bundle.ios": "NODE_ENV=production react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && NODE_ENV=production node lib/release",
+    "bundle.ios": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && NODE_ENV=production node lib/release",
     "lint": "eslint .",
     "postinstall": "npm run rm.babelrc && npm run rm.jshint",
     "rm.babelrc": "find node_modules -type f -name .babelrc | grep -v /react-native/ | xargs rm",
     "rm.jshint": "find . -type f -name '.jshint*' -maxdepth 1 | xargs rm",
-    "start": "node lib/release && react-native start",
+    "start": "node lib/release && node ./node_modules/react-native/local-cli/cli.js start",
     "validate": "npm ls >/dev/null",
     "xcode": "open ./ios/geohashing.xcodeproj"
   }
