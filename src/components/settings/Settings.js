@@ -109,13 +109,13 @@ export default class Settings extends Component {
             name='Latitude'
             onChangeText={this.handleLatitude}
             onSubmitEditing={this.handleLatitude}
-            value={this.state.latitude}
+            defaultValue={this.state.latitude}
           />
           <GeoInput
             name='Longitude'
             onChangeText={this.handleLongitude}
             onSubmitEditing={this.handleLongitude}
-            value={this.state.longitude}
+            defaultValue={this.state.longitude}
           />
           <IconButton
             onPress={this.handleCurrentLocation}
@@ -145,7 +145,7 @@ export default class Settings extends Component {
             // numbers related keyboard that has a return key to close the keyboard
             keyboardType='numbers-and-punctuation'
             onChangeText={this.handleDays}
-            value={this.state.days}
+            defaultValue={this.state.days}
           />
         </SettingsRow>
 

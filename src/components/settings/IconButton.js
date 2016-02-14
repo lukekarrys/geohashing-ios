@@ -2,7 +2,7 @@
 
 import React, {StyleSheet, View, PropTypes, Component} from 'react-native';
 import Button from 'react-native-button';
-import {Icon} from 'react-native-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
   iconButton: {
@@ -29,7 +29,7 @@ export default class IconButton extends Component {
         <View>
           <Icon
             color='#ffffff'
-            name={`fontawesome|${this.props.name}`}
+            name={this.props.name}
             size={this.props.size}
             style={styles.iconButton}
           />
