@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {StyleSheet, View, TextInput, Component, PropTypes} from 'react-native';
 
 import toInputValue from '../../helpers/toInputValue';
