@@ -36,3 +36,7 @@ npm-debug.log
 # Bundle
 #
 ios/*/main.jsbundle
+
+# Precommit hook
+#
+.jshint*
