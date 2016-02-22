@@ -32,3 +32,7 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 ## Upgrading project to latest react-native
 
 Use [`react-native upgrade`](https://facebook.github.io/react-native/docs/upgrading.html#2-upgrade-your-project-templates).
+
+## Gif!
+
+![gif](https://cldup.com/2wc-X5x034.gif)
