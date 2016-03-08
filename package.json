@@ -16,8 +16,8 @@
     "zero-fill": "^2.2.2"
   },
   "devDependencies": {
-    "@lukekarrys/eslint-config": "^2.0.12",
-    "babel-eslint": "^6.0.0-beta.2",
+    "@lukekarrys/eslint-config": "^2.0.13",
+    "babel-eslint": "^6.0.0-beta.3",
     "eslint": "^2.3.0",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-react": "^4.2.0",
