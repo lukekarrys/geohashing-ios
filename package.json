@@ -16,11 +16,11 @@
     "zero-fill": "^2.2.2"
   },
   "devDependencies": {
-    "@lukekarrys/eslint-config": "^2.0.15",
-    "babel-eslint": "^6.0.0-beta.5",
-    "eslint": "~2.2.0",
+    "@lukekarrys/eslint-config": "^2.0.16",
+    "babel-eslint": "^6.0.0-beta.6",
+    "eslint": "^2.4.0",
     "eslint-plugin-classes": "^0.1.1",
-    "eslint-plugin-react": "^4.2.0",
+    "eslint-plugin-react": "^4.2.1",
     "git-validate": "^2.1.4"
   },
   "enginges": {
