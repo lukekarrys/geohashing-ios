@@ -68,6 +68,7 @@ export default class GeohashMap extends Component {
       else {
         assign(state, {
           annotations: results.annotations,
+          overlays: results.overlays,
           region: {
             latitude: results.center.latitude,
             longitude: results.center.longitude,
@@ -85,12 +86,13 @@ export default class GeohashMap extends Component {
   // Render
   // ==========================
   render() {
-    const {loading, error, annotations, region} = this.state;
+    const {loading, error, annotations, overlays, region} = this.state;
     return (
       <View style={styles.container}>
         <MapView
           style={styles.container}
           annotations={annotations}
+          overlays={overlays}
           region={region}
         />
         <LoadingOverlay isVisible={loading} />

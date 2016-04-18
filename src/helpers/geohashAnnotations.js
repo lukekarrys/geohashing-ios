@@ -8,6 +8,13 @@ import flatten from 'lodash/flatten';
 
 import yyyymmdd from './yyyymmdd';
 
+const toJSON = (geo) => new Geo(geo).toJSON();
+
+const toBox = (geo) => {
+  const box = new Geo(geo).graticuleBox();
+  return box.map(toJSON).concat(toJSON(box[0]));
+};
+
 const toAnnotation = (title, from, point) => ({
   title,
   subtitle: `${from.milesFrom(point).toFixed(1)}mi`,
@@ -24,7 +31,21 @@ const toAnnotations = (location, results) => {
     return neighbors.map(partial(toAnnotation, date, location));
   })).concat(locationAnno);
 
-  return {annotations, center: {latitude, longitude}, location};
+  let overlays = [];
+  if (results.length) {
+    overlays = results[0].neighbors.map((geo) => ({
+      coordinates: toBox(geo),
+      strokeColor: '#f007',
+      lineWidth: 3
+    }));
+  }
+
+  return {
+    annotations,
+    overlays,
+    center: {latitude, longitude},
+    location
+  };
 };
 
 const fetch = (props, cb) => {
