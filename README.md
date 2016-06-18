@@ -3,6 +3,13 @@ geohashing-ios
 
 An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
+## Related Projects
+
+- [geohash-cli](https://github.com/lukekarrys/geohash-cli): Get the same info on your CLI
+- [geohash-coordinates](https://github.com/lukekarrys/geohash-coordinates): Does the heavy lifting for this project and the CLI of actually getting the coordinates
+- [geo-graticule](https://github.com/lukekarrys/geo-graticule): Get info about a graticule for any geocode
+- [djia](https://github.com/lukekarrys/djia): Get the Dow Jones opening value (which is used in the geohash algorithm)
+- [hex-frac-dec-frac](https://github.com/lukekarrys/hex-frac-dec-frac): Convert a hexadecimal fraction to a decimal fraction (also used by the algorithm)
 
 ## Developing and Building to Device
 
