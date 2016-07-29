@@ -1,3 +1,6 @@
 {
-  "extends": "@lukekarrys/eslint-config"
+  "extends": [
+    "@lukekarrys/eslint-config",
+    "plugin:import/react-native"
+  ]
 }
