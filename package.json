@@ -36,11 +36,9 @@
   "private": true,
   "scripts": {
     "bundle": "npm run bundle.ios",
-    "bundle.ios": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && NODE_ENV=production node lib/release",
+    "bundle.ios": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle",
     "lint": "eslint .",
-    "postinstall": "npm run rm.babelrc",
-    "rm.babelrc": "find node_modules -type f -name .babelrc | grep -v /react-native/ | xargs rm",
-    "start": "node lib/release && node ./node_modules/react-native/local-cli/cli.js start",
+    "start": "node ./node_modules/react-native/local-cli/cli.js start",
     "validate": "npm ls >/dev/null",
     "xcode": "open ./ios/geohashing.xcodeproj"
   }
