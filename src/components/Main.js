@@ -55,8 +55,6 @@ export default class Main extends Component {
   // ==========================
   render() {
     const drawerProps = {
-      type: 'static',
-      panOpenMask: 0.1,
       content: <Settings ref='settings' {...this.state} />,
       onClose: this.onDrawerClose,
       tweenHandler: this.onDrawerPan

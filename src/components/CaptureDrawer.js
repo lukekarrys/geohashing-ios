@@ -29,15 +29,16 @@ const styles = StyleSheet.create({
 // while the drawer is being panned.
 export default class CaptureDrawer extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
-    panOpenMask: PropTypes.number.isRequired
+    children: PropTypes.node.isRequired
   }
 
   render() {
     const {children, ...drawerProps} = this.props;
     const panOpenWidth = screen.width * drawerProps.panOpenMask;
+    const defaultDrawerProps = {type: 'static', panOpenMask: 0.1, panCloseMask: 0.1};
+
     return (
-      <Drawer {...drawerProps}>
+      <Drawer {...defaultDrawerProps} {...drawerProps}>
         <View style={styles.drawer}>
           {children}
           <View style={[styles.panCapture, {width: panOpenWidth}]} />
