@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {StyleSheet, View, PropTypes, Component} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, View} from 'react-native';
 
 import SettingsInput from './SettingsInput';
 

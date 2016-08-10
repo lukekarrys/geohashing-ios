@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {StyleSheet, View, Component, PropTypes} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, View} from 'react-native';
 import Drawer from 'react-native-drawer';
 
 import screen from '../helpers/deviceDimensions';

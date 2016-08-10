@@ -1,6 +1,9 @@
 package com.geohashing;
 
 import com.facebook.react.ReactActivity;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.devfd.RNGeocoder.RNGeocoderPackage;
+import com.cmcewen.blurview.BlurViewPackage;
 
 public class MainActivity extends ReactActivity {
 

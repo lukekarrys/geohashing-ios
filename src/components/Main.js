@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component} from 'react-native';
+import React, {Component} from 'react';
 
 import ErrorOverlay from './overlay/ErrorOverlay';
 import Drawer from './CaptureDrawer';

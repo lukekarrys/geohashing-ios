@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {MapView, View, StyleSheet, Component} from 'react-native';
+import React, {Component} from 'react';
+import {MapView, View, StyleSheet} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
 import assign from 'lodash/assign';
 

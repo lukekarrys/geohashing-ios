@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {StyleSheet, Text, View, PropTypes, Component} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
 const styles = StyleSheet.create({
   settingsRow: {

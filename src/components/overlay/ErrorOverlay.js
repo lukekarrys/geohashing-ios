@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes, Text, StyleSheet} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {Text, StyleSheet} from 'react-native';
 import {VibrancyView} from 'react-native-blur';
 
 import FadeOverlay from './FadeOverlay';

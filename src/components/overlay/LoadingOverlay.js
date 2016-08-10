@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes, ActivityIndicatorIOS, StyleSheet} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {ActivityIndicator, StyleSheet} from 'react-native';
 import {BlurView} from 'react-native-blur';
 
 import FadeOverlay from './FadeOverlay';
@@ -40,7 +41,7 @@ export default class LoadingOverlay extends Component {
         fadeOut={FADE_OUT_LENGTH}
       >
         <BlurView style={styles.background} blurType='light'>
-          <ActivityIndicatorIOS
+          <ActivityIndicator
             size='large'
             animating
             style={styles.spinner}

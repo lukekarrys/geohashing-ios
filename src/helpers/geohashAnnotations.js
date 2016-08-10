@@ -1,6 +1,6 @@
 'use strict';
 
-import geohash from 'geohash-coordinates';
+import {latest} from 'geohash-coordinates';
 import Geo from 'geo-graticule';
 import assign from 'lodash/assign';
 import partial from 'lodash/partial';
@@ -52,7 +52,7 @@ const fetch = (props, cb) => {
   const {latitude, longitude, date, days} = props;
   const location = {latitude, longitude};
 
-  geohash.latest({days, location, date: yyyymmdd(date)}, (err, results) => {
+  latest({days, location, date: yyyymmdd(date)}, (err, results) => {
     cb(err, err ? null : toAnnotations(new Geo(location), results));
   });
 };
