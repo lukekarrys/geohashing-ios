@@ -13,17 +13,12 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
 ## Developing and Building to Device
 
-### First
-
 - `npm install`
-
-### Local
-
 - `npm run start`
 - `npm run xcode`
 - Build for iOS Simulator when XCode launches
 
-### Release
+## Release
 
 [Running on device docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#building-your-app-for-production)
 
