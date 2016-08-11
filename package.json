@@ -36,8 +36,6 @@
   ],
   "private": true,
   "scripts": {
-    "bundle": "npm run bundle.ios",
-    "bundle.ios": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle",
     "lint": "eslint .",
     "start": "node ./node_modules/react-native/local-cli/cli.js start",
     "validate": "npm ls >/dev/null",
