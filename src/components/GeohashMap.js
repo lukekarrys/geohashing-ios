@@ -3,7 +3,6 @@
 import React, {Component} from 'react';
 import {MapView, View, StyleSheet} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
-import assign from 'lodash/assign';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
 import LoadingOverlay from './overlay/LoadingOverlay';
@@ -30,9 +29,6 @@ export default class GeohashMap extends Component {
     loading: false
   }
 
-  // ==========================
-  // Lifecycle
-  // ==========================
   componentDidMount() {
     this.respondToProps(this.props);
   }
@@ -61,31 +57,30 @@ export default class GeohashMap extends Component {
 
     // Get out geohash and set the appropriate state
     geohashAnnotations(props, (error, results) => {
-      const state = {loading: false};
-
       if (error) {
-        assign(state, {error});
+        this.setState({
+          error,
+          loading: false,
+          annotations: null,
+          overlays: null
+        });
       }
       else {
-        assign(state, {
+        this.setState({
+          loading: false,
           annotations: results.annotations,
           overlays: results.overlays,
           region: {
             latitude: results.center.latitude,
             longitude: results.center.longitude,
-            latitudeDelta: 3,
-            longitudeDelta: 3
+            latitudeDelta: 4,
+            longitudeDelta: 4
           }
         });
       }
-
-      this.setState(state);
     });
   }
 
-  // ==========================
-  // Render
-  // ==========================
   render() {
     const {loading, error, annotations, overlays, region} = this.state;
     return (

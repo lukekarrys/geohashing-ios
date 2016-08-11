@@ -1,33 +1,45 @@
+
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
 import {StyleSheet, View, DatePickerIOS} from 'react-native';
+import dismissKeyboard from 'react-native-dismiss-keyboard';
 import assign from 'lodash/assign';
 
 import GeoInput from './GeoInput';
 import IconButton from './IconButton';
 import SettingsInput from './SettingsInput';
 import SettingsRow from './SettingsRow';
+import ErrorOverlay from '../overlay/ErrorOverlay';
 import geolocation from '../../helpers/geolocation';
 import toNumber from '../../helpers/toNumber';
 import toInputValue from '../../helpers/toInputValue';
 
 const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    marginTop: 20
+  },
   flexRow: {
     flexDirection: 'row'
   },
   rowInput: {
     flex: 1,
     borderRightWidth: 1
+  },
+  error: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0
   }
 });
 
-const getNamedProps = (props) => {
-  const {latitude, longitude, date, days} = props;
-  return {latitude, longitude, date, days};
-};
+const getNamedProps = ({latitude, longitude, date, days}) => ({
+  latitude, longitude, date, days
+});
 
-const getText = (e) => toInputValue(e.nativeEvent ? e.nativeEvent.text : e);
+const getText = (e) => toInputValue(e && e.nativeEvent ? e.nativeEvent.text : e);
 
 export default class Settings extends Component {
   static propTypes = {
@@ -37,9 +49,13 @@ export default class Settings extends Component {
     days: PropTypes.number
   }
 
-  // ==========================
-  // Lifecycle
-  // ==========================
+  static defaultProps = {
+    latitude: null,
+    longitude: null,
+    date: new Date(),
+    days: 3
+  }
+
   constructor(props) {
     super(props);
     this.values = {};
@@ -50,9 +66,6 @@ export default class Settings extends Component {
     this.setState(getNamedProps(props));
   }
 
-  // ==========================
-  // Bound Handlers
-  // ==========================
   setValues = (values) => {
     assign(this.values, values);
   }
@@ -61,14 +74,20 @@ export default class Settings extends Component {
   // settings. Some of the input events dont fire if they are still active as
   // the settings drawer is being closed. And since inputs are controlled, we
   // cant use setState or we get dropped keystrokes.
-  getValues = () => assign({}, this.state, this.values || {})
+  getValues = () => assign({}, this.state, this.values)
 
   // Setting coordinates requires setting state to update UI and setting
   // values so they can be fetched when the drawer closes
-  setCoords = (coords) => {
-    this.setState(coords);
-    this.handleLatitude(coords.latitude);
-    this.handleLocation(coords.longitude);
+  setCoords = (error, coords = {}) => {
+    if (error) {
+      this.setState({error});
+      this.setValues({latitude: null, longitude: null});
+    }
+    else {
+      this.setState({error: null, ...coords});
+      this.handleLatitude(coords.latitude);
+      this.handleLocation(coords.longitude);
+    }
   }
 
   handleCurrentLocation = () => {
@@ -97,14 +116,12 @@ export default class Settings extends Component {
 
   handleDate = (date) => {
     this.setState({date});
+    dismissKeyboard();
   }
 
-  // ==========================
-  // Render
-  // ==========================
   render() {
     return (
-      <View style={{marginTop: 20}}>
+      <View style={styles.container}>
         <SettingsRow label='Coordinates' style={styles.flexRow}>
           <GeoInput
             name='Latitude'
@@ -140,11 +157,8 @@ export default class Settings extends Component {
 
         <SettingsRow label='Following days to find'>
           <SettingsInput
-            placeholder='4'
-            // TODO: use 'number-pad' instead once I figure out how
-            // to clear it. Currently 'numbers-and-puncutation' is the only
-            // numbers related keyboard that has a return key to close the keyboard
-            keyboardType='numbers-and-punctuation'
+            placeholder='3'
+            keyboardType='numeric'
             onChangeText={this.handleDays}
             defaultValue={this.state.days}
           />
@@ -160,6 +174,9 @@ export default class Settings extends Component {
           />
         </SettingsRow>
 
+        <View style={styles.error}>
+          <ErrorOverlay error={this.state.error} />
+        </View>
       </View>
     );
   }

@@ -1,12 +1,14 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
-  iconButton: {
+  button: {
+    paddingTop: 8,
+    paddingLeft: 9,
     width: 42,
     height: 42,
     backgroundColor: '#ccc'
@@ -21,20 +23,17 @@ export default class IconButton extends Component {
   }
 
   static defaultProps = {
-    size: 20
+    size: 24
   }
 
   render() {
     return (
-      <Button onPress={this.props.onPress}>
-        <View>
-          <Icon
-            color='#ffffff'
-            name={this.props.name}
-            size={this.props.size}
-            style={styles.iconButton}
-          />
-        </View>
+      <Button onPress={this.props.onPress} containerStyle={styles.button}>
+        <Icon
+          color='#ffffff'
+          name={this.props.name}
+          size={this.props.size}
+        />
       </Button>
     );
   }

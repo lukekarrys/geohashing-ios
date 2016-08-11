@@ -11,7 +11,7 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 - [djia](https://github.com/lukekarrys/djia): Get the Dow Jones opening value (which is used in the geohash algorithm)
 - [hex-frac-dec-frac](https://github.com/lukekarrys/hex-frac-dec-frac): Convert a hexadecimal fraction to a decimal fraction (also used by the algorithm)
 
-## Developing and Building to Device
+## Developing
 
 - `npm install`
 - `npm run start`
@@ -22,6 +22,7 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
 - Set scheme to release
 > To disable the developer menu for production builds, open your project in Xcode and select `Product` → `Scheme` → `Edit Scheme...` (or press `⌘ + <`). Next, select `Run` from the menu on the left and change the Build Configuration to `Release`.
+- Build for device from Xcode
 
 For more info, see the full [running on device docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#building-your-app-for-production)
 

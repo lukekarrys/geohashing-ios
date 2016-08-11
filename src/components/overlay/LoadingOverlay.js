@@ -11,11 +11,7 @@ const FADE_OUT_LENGTH = 500;
 
 const styles = StyleSheet.create({
   background: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
+    ...StyleSheet.absoluteFillObject,
     borderWidth: 0,
     backgroundColor: 'transparent',
     justifyContent: 'center',

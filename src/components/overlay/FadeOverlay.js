@@ -5,13 +5,7 @@ import {View, StyleSheet} from 'react-native';
 import tween from 'react-native-drawer/tweener';
 
 const styles = StyleSheet.create({
-  fullBackground: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0
-  },
+  fullBackground: StyleSheet.absoluteFillObject,
   background: {
     borderWidth: 0,
     backgroundColor: 'transparent',
