@@ -23,7 +23,9 @@ An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 ## Release
 
 - Set scheme to release
+
 > To disable the developer menu for production builds, open your project in Xcode and select `Product` → `Scheme` → `Edit Scheme...` (or press `⌘ + <`). Next, select `Run` from the menu on the left and change the Build Configuration to `Release`.
+
 - Build for device from Xcode
 
 For more info, see the full [running on device docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#building-your-app-for-production)
