@@ -1,6 +1,8 @@
 geohashing-ios
 ==================
 
+[![Build Status](https://travis-ci.org/lukekarrys/geohashing-ios.png?branch=master)](https://travis-ci.org/lukekarrys/geohashing-ios)
+
 An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
 
 ## Related Projects
