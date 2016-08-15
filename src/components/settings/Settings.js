@@ -90,12 +90,20 @@ export default class Settings extends Component {
     }
   }
 
-  handleCurrentLocation = () => {
-    geolocation.current(this.setCoords);
+  handleCurrentLocation = (e) => {
+    this.setState({loadingGeo: true});
+    geolocation.current((error, coords) => {
+      this.setState({loadingGeo: false});
+      this.setCoords(error, coords);
+    });
   }
 
   handleLocationSearch = (e) => {
-    geolocation.reverse(this.values.location, this.setCoords);
+    this.setState({loadingLocation: true});
+    geolocation.reverse(this.values.location, (error, coords) => {
+      this.setState({loadingLocation: false});
+      this.setCoords(error, coords);
+    });
   }
 
   handleLocation = (e) => {
@@ -137,7 +145,7 @@ export default class Settings extends Component {
           />
           <IconButton
             onPress={this.handleCurrentLocation}
-            name='location-arrow'
+            name={this.state.loadingGeo ? 'spinner' : 'location-arrow'}
           />
         </SettingsRow>
 
@@ -151,7 +159,7 @@ export default class Settings extends Component {
           />
           <IconButton
             onPress={this.handleLocationSearch}
-            name='search'
+            name={this.state.loadingLocation ? 'spinner' : 'search'}
           />
         </SettingsRow>
 
