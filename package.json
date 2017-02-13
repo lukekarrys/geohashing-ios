@@ -28,7 +28,7 @@
     "rimraf": "^2.5.4"
   },
   "enginges": {
-    "node": "^5.0.0"
+    "node": "^6.0.0"
   },
   "main": "README.md",
   "pre-commit": [
