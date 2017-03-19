@@ -19,10 +19,11 @@
   "devDependencies": {
     "@lukekarrys/eslint-config": "^3.0.0",
     "babel-eslint": "^7.1.1",
-    "eslint": "^3.2.2",
+    "eslint": "^3.18.0",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^6.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.2",
     "git-validate": "^2.1.4",
     "react-native-dismiss-keyboard": "^1.0.0",
     "rimraf": "^2.5.4"

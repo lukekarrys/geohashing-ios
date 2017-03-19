@@ -35,11 +35,12 @@ export default class FadeOverlay extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const {fadeIn, fadeOut} = nextProps;
     if (nextProps.isVisible && !this.props.isVisible) {
-      this.fadeOverlay(0, 1, nextProps.fadeIn);
+      this.fadeOverlay(0, 1, fadeIn);
     }
     else if (!nextProps.isVisible && this.props.isVisible) {
-      this.fadeOverlay(1, 0, nextProps.fadeOut);
+      this.fadeOverlay(1, 0, fadeOut);
     }
   }
 

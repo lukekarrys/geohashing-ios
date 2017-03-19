@@ -30,7 +30,8 @@ export default class GeohashMap extends Component {
   }
 
   componentDidMount() {
-    this.respondToProps(this.props);
+    const {latitude, longitude, date, days} = this.props;
+    this.respondToProps({latitude, longitude, date, days});
   }
 
   componentWillReceiveProps(props) {
