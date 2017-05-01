@@ -1,6 +1,7 @@
 geohashing-ios
 ==================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukekarrys/geohashing-ios.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/lukekarrys/geohashing-ios.png?branch=master)](https://travis-ci.org/lukekarrys/geohashing-ios)
 
 An iOS app built for [geohashing](https://xkcd.com/426/) with React Native.
