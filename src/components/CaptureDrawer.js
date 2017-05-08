@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import Drawer from '@lukekarrys/react-native-drawer';
 import {BlurView} from 'react-native-blur';

@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {MapView, View, StyleSheet} from 'react-native';
 import shallowEqual from 'react-pure-render/shallowEqual';
 
@@ -16,10 +17,10 @@ const styles = StyleSheet.create({
 
 export default class GeohashMap extends Component {
   static propTypes = {
-    latitude: React.PropTypes.number,
-    longitude: React.PropTypes.number,
-    date: React.PropTypes.instanceOf(Date),
-    days: React.PropTypes.number
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    date: PropTypes.instanceOf(Date),
+    days: PropTypes.number
   }
 
   state = {

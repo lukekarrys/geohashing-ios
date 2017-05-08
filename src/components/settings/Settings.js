@@ -1,7 +1,8 @@
 
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, View, DatePickerIOS} from 'react-native';
 import dismissKeyboard from 'react-native-dismiss-keyboard';
 import assign from 'lodash/assign';
