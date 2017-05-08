@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
 import tween from '@lukekarrys/react-native-drawer/tweener';
 

@@ -6,27 +6,28 @@
     "@lukekarrys/react-native-drawer": "^2.2.8",
     "geo-graticule": "^2.0.5",
     "geohash-coordinates": "^1.1.6",
-    "lodash": "^4.14.2",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.8",
     "react": "~15.4.2",
     "react-native": "^0.41.2",
     "react-native-blur": "^2.0.0",
-    "react-native-button": "^1.6.0",
-    "react-native-geocoder": "^0.4.4",
-    "react-native-vector-icons": "^4.0.0",
+    "react-native-button": "^1.8.2",
+    "react-native-geocoder": "^0.4.8",
+    "react-native-vector-icons": "^4.1.1",
     "react-pure-render": "^1.0.2",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
     "@lukekarrys/eslint-config": "^3.0.0",
-    "babel-eslint": "^7.1.1",
-    "eslint": "^3.18.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.0",
-    "git-validate": "^2.1.4",
+    "git-validate": "^2.2.2",
     "react-native-dismiss-keyboard": "^1.0.0",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.6.1"
   },
   "enginges": {
     "node": "^6.0.0"
