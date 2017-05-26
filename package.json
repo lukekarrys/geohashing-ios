@@ -7,10 +7,11 @@
     "geohash-coordinates": "^1.1.6",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
-    "react": "^16.0.0-alpha.6",
+    "react": "16.0.0-alpha.6",
     "react-native": "^0.44.2",
     "react-native-blur": "^3.0.0-alpha",
     "react-native-button": "^1.8.2",
+    "react-native-dismiss-keyboard": "^1.0.0",
     "react-native-drawer": "^2.3.0",
     "react-native-geocoder": "^0.4.8",
     "react-native-vector-icons": "^4.1.1",
@@ -20,6 +21,8 @@
   "devDependencies": {
     "@lukekarrys/eslint-config": "^4.0.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
     "eslint": "^3.19.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-classes": "^0.1.1",
@@ -27,11 +30,15 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.0",
     "git-validate": "^2.2.2",
-    "react-native-dismiss-keyboard": "^1.0.0",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6",
     "rimraf": "^2.6.1"
   },
   "enginges": {
     "node": "^6.0.0"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "main": "README.md",
   "pre-commit": [
@@ -41,8 +48,9 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "start": "node ./node_modules/react-native/local-cli/cli.js start",
-    "test": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && rimraf ios/geohashing/main.jsbundle*",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "test:build": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && rimraf ios/geohashing/main.jsbundle*",
     "validate": "npm ls >/dev/null",
     "xcode": "open ./ios/geohashing.xcodeproj"
   }
