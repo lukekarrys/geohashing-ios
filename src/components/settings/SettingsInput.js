@@ -24,7 +24,7 @@ export default class SettingsInput extends Component {
     containerStyle: View.propTypes.style,
     inputStyle: TextInput.propTypes.style,
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  }
+  };
 
   render() {
     const {containerStyle, inputStyle, defaultValue, ...rest} = this.props;

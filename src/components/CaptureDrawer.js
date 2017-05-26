@@ -51,11 +51,11 @@ export default class CaptureDrawer extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     onChange: PropTypes.func
-  }
+  };
 
   handleClose = () => {
     this.props.onChange(this.settings.getValues());
-  }
+  };
 
   getContent() {
     return (

@@ -48,14 +48,14 @@ export default class Settings extends Component {
     longitude: PropTypes.number,
     date: PropTypes.instanceOf(Date),
     days: PropTypes.number
-  }
+  };
 
   static defaultProps = {
     latitude: null,
     longitude: null,
     date: new Date(),
     days: 3
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -69,13 +69,13 @@ export default class Settings extends Component {
 
   setValues = (values) => {
     assign(this.values, values);
-  }
+  };
 
   // This public to allow for the parent view to get the latest data from
   // settings. Some of the input events dont fire if they are still active as
   // the settings drawer is being closed. And since inputs are controlled, we
   // cant use setState or we get dropped keystrokes.
-  getValues = () => assign({}, this.state, this.values)
+  getValues = () => assign({}, this.state, this.values);
 
   // Setting coordinates requires setting state to update UI and setting
   // values so they can be fetched when the drawer closes
@@ -89,7 +89,7 @@ export default class Settings extends Component {
       this.handleLatitude(coords.latitude);
       this.handleLocation(coords.longitude);
     }
-  }
+  };
 
   handleCurrentLocation = (e) => {
     this.setState({loadingGeo: true});
@@ -97,7 +97,7 @@ export default class Settings extends Component {
       this.setState({loadingGeo: false});
       this.setCoords(error, coords);
     });
-  }
+  };
 
   handleLocationSearch = (e) => {
     this.setState({loadingLocation: true});
@@ -105,28 +105,28 @@ export default class Settings extends Component {
       this.setState({loadingLocation: false});
       this.setCoords(error, coords);
     });
-  }
+  };
 
   handleLocation = (e) => {
     this.setValues({location: getText(e)});
-  }
+  };
 
   handleLatitude = (e) => {
     this.setValues({latitude: toNumber(getText(e))});
-  }
+  };
 
   handleLongitude = (e) => {
     this.setValues({longitude: toNumber(getText(e))});
-  }
+  };
 
   handleDays = (e) => {
     this.setValues({days: toNumber(getText(e))});
-  }
+  };
 
   handleDate = (date) => {
     this.setState({date});
     dismissKeyboard();
-  }
+  };
 
   render() {
     return (

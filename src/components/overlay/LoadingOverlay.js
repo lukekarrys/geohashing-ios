@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
 export default class LoadingOverlay extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired
-  }
+  };
 
   static defaultProps = {
     isVisible: false
-  }
+  };
 
   render() {
     return (

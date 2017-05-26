@@ -21,14 +21,14 @@ export default class GeohashMap extends Component {
     longitude: PropTypes.number,
     date: PropTypes.instanceOf(Date),
     days: PropTypes.number
-  }
+  };
 
   state = {
     annotations: null,
     region: null,
     error: null,
     loading: false
-  }
+  };
 
   componentDidMount() {
     const {latitude, longitude, date, days} = this.props;

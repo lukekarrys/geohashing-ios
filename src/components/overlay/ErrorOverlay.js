@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 export default class ErrorOverlay extends Component {
   static propTypes = {
     error: PropTypes.instanceOf(Error)
-  }
+  };
 
   render() {
     return (

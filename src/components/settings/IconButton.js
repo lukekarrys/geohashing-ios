@@ -21,11 +21,11 @@ export default class IconButton extends Component {
     onPress: PropTypes.func,
     name: PropTypes.string,
     size: PropTypes.number
-  }
+  };
 
   static defaultProps = {
     size: 24
-  }
+  };
 
   render() {
     return (

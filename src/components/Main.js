@@ -25,7 +25,7 @@ export default class Main extends Component {
 
   handleSettingsChange = (settings) => {
     this.setState(settings);
-  }
+  };
 
   render() {
     const data = pick(this.state, 'latitude', 'longitude', 'date', 'days');

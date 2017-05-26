@@ -22,18 +22,18 @@ export default class FadeOverlay extends Component {
     fullBackground: PropTypes.bool,
     fadeIn: PropTypes.number,
     fadeOut: PropTypes.number
-  }
+  };
 
   static defaultProps = {
     isVisible: false,
     fullBackground: false,
     fadeIn: 100,
     fadeOut: 100
-  }
+  };
 
   state = {
     isFading: false
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     const {fadeIn, fadeOut} = nextProps;
@@ -62,11 +62,11 @@ export default class FadeOverlay extends Component {
         o.setNativeProps({style: {opacity: end}});
       }
     });
-  }
+  };
 
   setOverlay = (component) => {
     this.overlay = component;
-  }
+  };
 
   render() {
     const propStyle = this.props.fullBackground ? styles.fullBackground : null;

@@ -17,7 +17,7 @@ export default class GeoInput extends Component {
   static propTypes = {
     style: View.propTypes.style,
     name: PropTypes.string
-  }
+  };
 
   render() {
     const {style, name, ...rest} = this.props;

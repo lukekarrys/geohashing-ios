@@ -19,7 +19,7 @@ export default class SettingsRow extends Component {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
     style: View.propTypes.style,
     label: PropTypes.string
-  }
+  };
 
   render() {
     return (

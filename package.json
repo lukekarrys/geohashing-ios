@@ -18,9 +18,10 @@
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
-    "@lukekarrys/eslint-config": "^3.0.1",
+    "@lukekarrys/eslint-config": "^4.0.0",
     "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
+    "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-promise": "^3.5.0",
@@ -40,7 +41,6 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "postinstall": "find node_modules -type f -name .babelrc | grep -v /react-native/ | xargs rm",
     "start": "node ./node_modules/react-native/local-cli/cli.js start",
     "test": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && rimraf ios/geohashing/main.jsbundle*",
     "validate": "npm ls >/dev/null",
