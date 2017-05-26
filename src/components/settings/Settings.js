@@ -134,12 +134,14 @@ export default class Settings extends Component {
         <SettingsRow label='Coordinates' style={styles.flexRow}>
           <GeoInput
             name='Latitude'
+            keyboardType='numbers-and-punctuation'
             onChangeText={this.handleLatitude}
             onSubmitEditing={this.handleLatitude}
             defaultValue={this.state.latitude}
           />
           <GeoInput
             name='Longitude'
+            keyboardType='numbers-and-punctuation'
             onChangeText={this.handleLongitude}
             onSubmitEditing={this.handleLongitude}
             defaultValue={this.state.longitude}

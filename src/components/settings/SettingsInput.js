@@ -32,6 +32,8 @@ export default class SettingsInput extends Component {
       <View style={[styles.settingsInputContainer, containerStyle]}>
         <TextInput
           {...rest}
+          autoCorrect={false}
+          autoCapitalize='none'
           defaultValue={toInputValue(defaultValue)}
           style={[styles.settingsInput, inputStyle]}
         />
