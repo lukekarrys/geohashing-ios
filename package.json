@@ -49,10 +49,12 @@
   ],
   "private": true,
   "scripts": {
+    "cli": "node node_modules/react-native/local-cli/cli.js",
+    "ios": "npm run cli -- run-ios",
     "lint": "eslint .",
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "npm run cli -- start",
     "test": "jest",
-    "test:build": "NODE_ENV=production node ./node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/geohashing/main.jsbundle && rimraf ios/geohashing/main.jsbundle*",
+    "test:build": "NODE_ENV=production npm run cli -- bundle --entry-file index.ios.js --platform ios --dev false --bundle-output build.test.js && rimraf build.test.js*",
     "validate": "npm ls >/dev/null; echo 'TODO: fix peer deps'; exit 0",
     "xcode": "open ./ios/geohashing.xcodeproj"
   }
