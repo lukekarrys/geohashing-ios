@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
 import MapView from 'react-native-maps';
-import shallowEqual from 'shallowequal';
+import shallowEqual from 'fbjs/lib/shallowEqual';
 import {pick} from 'lodash';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';

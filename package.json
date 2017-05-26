@@ -3,6 +3,7 @@
   "description": "A geohashing app for iOS built with React Native",
   "version": "1.0.0",
   "dependencies": {
+    "fbjs": "^0.8.12",
     "geo-graticule": "^2.0.5",
     "geohash-coordinates": "^1.1.6",
     "lodash": "^4.17.4",
@@ -16,7 +17,6 @@
     "react-native-geocoder": "^0.4.8",
     "react-native-maps": "^0.15.2",
     "react-native-vector-icons": "^4.1.1",
-    "shallowequal": "^1.0.1",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
