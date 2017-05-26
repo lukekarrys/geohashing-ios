@@ -34,9 +34,7 @@ const toAnnotations = (location, results) => {
   let overlays = [];
   if (results.length) {
     overlays = results[0].neighbors.map((geo) => ({
-      coordinates: toBox(geo),
-      strokeColor: '#f007',
-      lineWidth: 3
+      coordinates: toBox(geo)
     }));
   }
 

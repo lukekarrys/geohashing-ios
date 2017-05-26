@@ -2,8 +2,10 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MapView, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import MapView from 'react-native-maps';
 import shallowEqual from 'react-pure-render/shallowEqual';
+import {pick} from 'lodash';
 
 import geohashAnnotations from '../helpers/geohashAnnotations';
 import LoadingOverlay from './overlay/LoadingOverlay';
@@ -87,12 +89,24 @@ export default class GeohashMap extends Component {
     const {loading, error, annotations, overlays, region} = this.state;
     return (
       <View style={styles.container}>
-        <MapView
-          style={styles.container}
-          annotations={annotations}
-          overlays={overlays}
-          region={region}
-        />
+        <MapView style={styles.container} region={region}>
+          {annotations && annotations.map((a, index) => (
+            <MapView.Marker
+              key={index}
+              title={a.title}
+              description={a.subtitle}
+              coordinate={pick(a, 'latitude', 'longitude')}
+            />
+          ))}
+          {overlays && overlays.map((o, index) => (
+            <MapView.Polyline
+              key={index}
+              coordinates={o.coordinates}
+              strokeColor={'#f007'}
+              strokeWidth={3}
+            />
+          ))}
+        </MapView>
         <LoadingOverlay isVisible={loading} />
         <ErrorOverlay error={error} />
       </View>
