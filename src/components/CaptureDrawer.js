@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import Drawer from 'react-native-drawer';
-import {BlurView} from 'react-native-blur';
 import dismissKeyboard from 'react-native-dismiss-keyboard';
 import {pick} from 'lodash';
 
@@ -33,13 +32,8 @@ const defaultDrawerProps = {
   panOpenMask: 0.1,
   panCloseMask: 0,
   openDrawerOffset: 0.1,
-  styles: {mainOverlay: {opacity: 0}},
   onCloseStart: () => dismissKeyboard(),
-  mainOverlay: <BlurView style={styles.blur} blurType='light' />,
-  tweenHandler: (ratio) => ({
-    ...Drawer.tweenPresets.parallax(ratio),
-    mainOverlay: {opacity: ratio * 2}
-  })
+  tweenHandler: Drawer.tweenPresets.parallax
 };
 
 // Use the props.panOpenMask prop that gets passed down to react-native-drawer
