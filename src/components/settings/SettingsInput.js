@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput, ViewPropTypes} from 'react-native';
 
 import toInputValue from '../../helpers/toInputValue';
 
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
 
 export default class SettingsInput extends Component {
   static propTypes = {
-    containerStyle: View.propTypes.style,
-    inputStyle: TextInput.propTypes.style,
+    containerStyle: ViewPropTypes.style,
+    inputStyle: ViewPropTypes.style,
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 

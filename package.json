@@ -43,7 +43,8 @@
   },
   "main": "README.md",
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "private": true,
   "scripts": {

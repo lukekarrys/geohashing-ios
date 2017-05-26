@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, ViewPropTypes} from 'react-native';
 
 import SettingsInput from './SettingsInput';
 
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 export default class GeoInput extends Component {
   static propTypes = {
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     name: PropTypes.string
   };
 

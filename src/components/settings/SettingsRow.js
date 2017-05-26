@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ViewPropTypes} from 'react-native';
 
 const styles = StyleSheet.create({
   settingsRow: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 export default class SettingsRow extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     label: PropTypes.string
   };
 
