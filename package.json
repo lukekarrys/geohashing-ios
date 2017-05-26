@@ -16,7 +16,7 @@
     "react-native-geocoder": "^0.4.8",
     "react-native-maps": "^0.15.2",
     "react-native-vector-icons": "^4.1.1",
-    "react-pure-render": "^1.0.2",
+    "shallowequal": "^1.0.1",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
