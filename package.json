@@ -44,6 +44,7 @@
   "main": "README.md",
   "pre-commit": [
     "lint",
+    "validate",
     "test"
   ],
   "private": true,
