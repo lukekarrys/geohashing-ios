@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
-import tween from '@lukekarrys/react-native-drawer/tweener';
+import tween from 'react-native-drawer/tweener';
 
 const styles = StyleSheet.create({
   fullBackground: StyleSheet.absoluteFillObject,
