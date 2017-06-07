@@ -9,7 +9,7 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
     "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.2",
+    "react-native": "^0.45.0",
     "react-native-blur": "^3.0.0-alpha",
     "react-native-button": "^2.0.0",
     "react-native-dismiss-keyboard": "^1.0.0",
