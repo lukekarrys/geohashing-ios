@@ -36,10 +36,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const getNamedProps = ({latitude, longitude, date, days}) => ({
-  latitude, longitude, date, days
-});
-
 const getText = (e) => toInputValue(e && e.nativeEvent ? e.nativeEvent.text : e);
 
 export default class Settings extends Component {
@@ -60,11 +56,13 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.values = {};
-    this.state = getNamedProps(props);
+    const {latitude, longitude, date, days} = props;
+    this.state = {latitude, longitude, date, days};
   }
 
   componentWillReceiveProps(props) {
-    this.setState(getNamedProps(props));
+    const {latitude, longitude, date, days} = props;
+    this.setState({latitude, longitude, date, days});
   }
 
   setValues = (values) => {
