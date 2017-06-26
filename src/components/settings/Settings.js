@@ -56,21 +56,13 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.values = {};
-    this.state = {
-      latitude: props.latitude,
-      longitude: props.longitude,
-      date: props.date,
-      days: props.days
-    };
+    const {latitude, longitude, date, days} = props;
+    this.state = {latitude, longitude, date, days};
   }
 
   componentWillReceiveProps(props) {
-    this.setState({
-      latitude: props.latitude,
-      longitude: props.longitude,
-      date: props.date,
-      days: props.days
-    });
+    const {latitude, longitude, date, days} = props;
+    this.setState({latitude, longitude, date, days});
   }
 
   setValues = (values) => {
