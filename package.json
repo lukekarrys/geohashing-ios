@@ -15,7 +15,7 @@
     "react-native-dismiss-keyboard": "^1.0.0",
     "react-native-drawer": "^2.3.0",
     "react-native-geocoder": "^0.4.8",
-    "react-native-maps": "^0.15.2",
+    "react-native-maps": "^0.16.0",
     "react-native-vector-icons": "^4.2.0",
     "zero-fill": "^2.2.3"
   },
