@@ -1,7 +1,6 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {pick} from 'lodash';
 
 import Drawer from './CaptureDrawer';
 import GeoMap from './GeohashMap';
@@ -28,7 +27,8 @@ export default class Main extends Component {
   };
 
   render() {
-    const data = pick(this.state, 'latitude', 'longitude', 'date', 'days');
+    const {latitude, longitude, date, days} = this.state;
+    const data = {latitude, longitude, date, days};
     return (
       <Drawer onChange={this.handleSettingsChange} {...data}>
         <GeoMap {...data} error={this.state.error} />
