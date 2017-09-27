@@ -31,7 +31,7 @@
     "eslint-plugin-react": "^7.2.1",
     "git-validate": "^2.2.2",
     "jest": "^21.0.1",
-    "react-test-renderer": "16.0.0-alpha.12",
+    "react-test-renderer": "16.0.0",
     "rimraf": "^2.6.1"
   },
   "enginges": {
