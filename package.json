@@ -40,6 +40,12 @@
   "enginges": {
     "node": "^6.0.0"
   },
+  "greenkeeper": {
+    "ignore": [
+      "react",
+      "react-test-renderer"
+    ]
+  },
   "jest": {
     "preset": "react-native"
   },
