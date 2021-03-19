@@ -6,7 +6,7 @@
     "fbjs": "^0.8.16",
     "geo-graticule": "^2.0.5",
     "geohash-coordinates": "^1.1.7",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "^0.51.0",
